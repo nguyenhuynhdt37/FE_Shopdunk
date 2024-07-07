@@ -1,0 +1,17 @@
+$text-color: #d2d2d7;
+$white-color: #fff;
+$hover-color: #626265;
+.header__router--item {
+    &:hover {
+        background-color: $hover-color ;
+    }
+    a {
+        color: $text-color;
+    }
+}
+.header-icon, .box-vn, .box-en {
+    height: 100%;
+    color: $white-color;
+    font-size: 2.2rem !important;
+    margin-left: 1rem;
+}

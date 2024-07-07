@@ -1,0 +1,23 @@
+.slick-prev:before,
+.slick-next:before {
+  color: #000;
+  font-size: 3rem;
+}
+
+.slick-slider {
+  padding: 0;
+}
+.slick-slide {
+  padding: 0 10px; /* Thêm khoảng cách 10px giữa các cạnh trái và phải của mỗi slide */
+}
+.slick-prev::before {
+  position: absolute;
+  left: 3.5rem !important;
+}
+.slick-next::before {
+  position: absolute;
+  right: 3.5rem !important;
+}
+.slick-list {
+  margin: 0 -1rem;
+}

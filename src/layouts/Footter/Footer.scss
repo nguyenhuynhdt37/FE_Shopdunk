@@ -1,0 +1,28 @@
+$footerBackgroud: #1d1d1f;
+$textFooterMain: #d2d2d7;
+$textItem: #848489;
+
+.footer-box {
+  background-color: $footerBackgroud;
+  padding: 64px 0px 21px;
+  color: $textFooterMain;
+  font-size: 1.5rem;
+  text-align: justify;
+
+  .footer-decription {
+    line-height: 2.4rem !important;
+    margin: 1rem 0;
+    padding: 0.8rem 0;
+  }
+  .custom-box {
+    background-color: #ecf0f1;
+    .phone-number {
+      color: #06c;
+    }
+  }
+}
+.footer-nav {
+  line-height: 2.8rem;
+  font-size: 1.3rem;
+  color: #86868b;
+}

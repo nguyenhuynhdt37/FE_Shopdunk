@@ -1,0 +1,32 @@
+$price-color: #0066cc;
+.box-item {
+  padding: 2.4rem 2rem 1.6rem 2rem;
+  border-radius: 0.8rem;
+  &:hover {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
+}
+.product__price--current {
+  color: $price-color;
+  font-weight: bold;
+}
+.product__price--old {
+  text-decoration: line-through;
+}
+.container-items {
+  margin: 0 -0.75rem;
+}
+.box-item {
+  margin: 0.75rem 0;
+}
+.btn-more {
+  color: $price-color;
+  font-weight: 500;
+  width: 22.3rem;
+  height: 4rem;
+  border: 1px solid $price-color;
+  &:hover {
+    color: #fff;
+    background: $price-color;
+  }
+}

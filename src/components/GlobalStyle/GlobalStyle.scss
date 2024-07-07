@@ -1,0 +1,12 @@
+$bgcolor-default: #f5f5f7;
+
+.container-app {
+  background-color: $bgcolor-default;
+}
+.container {
+  max-width: 120rem;
+  // padding: 0;
+}
+.row {
+  margin: 0 -7.5px;
+}
