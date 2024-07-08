@@ -11,7 +11,7 @@ const NewsItems = () => {
         />
       </div>
       <div className="news-head p-10 bg-white">
-        <div className="news-title h-48  font-bold text-2.5xl">
+        <div className="news-title h-48 font-bold text-2.5xl">
           Tổng hợp CTKM tháng 6 tại ShopDunk. Ưu đãi lên đến 11 Triệu cho sản
           phẩm Apple chính hãng
         </div>
