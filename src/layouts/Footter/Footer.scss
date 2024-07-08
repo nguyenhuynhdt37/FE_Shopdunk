@@ -1,6 +1,7 @@
 $footerBackgroud: #1d1d1f;
 $textFooterMain: #d2d2d7;
 $textItem: #848489;
+$lineColor: #515154;
 
 .footer-box {
   background-color: $footerBackgroud;
@@ -25,4 +26,18 @@ $textItem: #848489;
   line-height: 2.8rem;
   font-size: 1.3rem;
   color: #86868b;
+}
+
+.certification {
+  background-color: $lineColor;
+  height: 1px;
+  margin-top: 5.8rem;
+}
+.footer-box-router {
+  padding: 0 7.5px !important;
+}
+.footer-certificate {
+  line-height: 2rem;
+  color: #515154;
+  font-size: 1.3rem;
 }
