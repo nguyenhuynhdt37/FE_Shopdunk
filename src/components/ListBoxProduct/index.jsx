@@ -1,5 +1,5 @@
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
-import ItemProduct from "../ItemProduct/ItemProduct";
+import ItemProduct from "../ItemProduct";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const ListBoxProduct = ({ title, listProduct }) => {

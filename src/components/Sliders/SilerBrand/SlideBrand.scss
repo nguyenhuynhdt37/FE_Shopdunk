@@ -10,6 +10,11 @@
 .slick-slide {
   padding: 0 10px; /* Thêm khoảng cách 10px giữa các cạnh trái và phải của mỗi slide */
 }
+.product {
+  .slick-slide {
+    padding: 0 2px; /* Thêm khoảng cách 10px giữa các cạnh trái và phải của mỗi slide */
+  }
+}
 .slick-prev::before {
   position: absolute;
   left: 3.5rem !important;

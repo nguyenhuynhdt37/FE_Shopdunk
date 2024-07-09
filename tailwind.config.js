@@ -11,6 +11,13 @@ module.exports = {
       },
       fontSize: {
         "2.5xl": "1.8rem",
+        "1.5xl": "1.4rem",
+      },
+      borderWidth: {
+        1: "1px",
+      },
+      padding: {
+        "reduce-2": "2px",
       },
     },
   },

@@ -57,7 +57,9 @@ const Header = () => {
         </ul>
         <div className="header_features h-100 d-flex align-items-center fs-5">
           <IoSearch className="header-icon" />
-          <ShoppingBagOutlinedIcon className="header-icon" />
+          <div className="header-cart ">
+            <ShoppingBagOutlinedIcon className="header-icon" />
+          </div>
           <PersonOutlineOutlinedIcon className="header-icon" />
           <div className="box-vn position-relative" style={{ width: "2rem" }}>
             <img

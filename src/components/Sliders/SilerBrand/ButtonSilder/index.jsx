@@ -3,7 +3,7 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./SlideBrand.scss";
+import "../SlideBrand.scss";
 
 function PrevArrow(props) {
   const { className, style, onClick } = props;
