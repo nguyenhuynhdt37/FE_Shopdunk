@@ -18,7 +18,7 @@ function SliderBrand({ images, ...prev }) {
     autoplay: true,
     slidesToShow: 3,
     slidesToScroll: 1,
-    afterChange: (current) => setCurrentSlide(current),
+    afterChange: (current) => setImage(current),
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
     autoplaySpeed: 5000,
@@ -28,9 +28,9 @@ function SliderBrand({ images, ...prev }) {
   if (prev.node === "slideProduct") {
     settings = {
       ...settings,
-      slidesToShow: 4,
-      // slidesToScroll: 100,
+      slidesToShow: 5,
       centerMode: true,
+      autoplay: false,
     };
   }
   return (
