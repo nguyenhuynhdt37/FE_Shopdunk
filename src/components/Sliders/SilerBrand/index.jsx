@@ -8,8 +8,10 @@ import ImageSlide from "./ImageSlide";
 import ImageProduct from "./ImageProduct";
 
 function SliderBrand({ images, ...prev }) {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const ref = useRef();
+  const [image, setImage] = useState("");
+  const handleSelectImage = (value) => {
+    setImage(value);
+  };
   let settings = {
     infinite: true,
     speed: 500,
@@ -37,7 +39,11 @@ function SliderBrand({ images, ...prev }) {
         {(prev &&
           prev.node &&
           images.map((image, index) => (
-            <ImageProduct image={image.link} key={index} />
+            <ImageProduct
+              onSelectImage={handleSelectImage}
+              image={image.link}
+              key={index}
+            />
           ))) ||
           images.map((image, index) => (
             <ImageSlide image={image.link} key={index} />

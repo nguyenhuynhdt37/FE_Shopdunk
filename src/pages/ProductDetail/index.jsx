@@ -1,7 +1,8 @@
 import { ChevronRight } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import "./ProductDetail.scss";
-import SliderBrand from "../../components/Sliders/SilerBrand";
+// import SliderBrand from "../../components/Sliders/SilerBrand";
+import ShowProduct from "../../components/ShowProduct/ShowProduct";
 const images = [
   { link: "https://shopdunk.com/images/thumbs/0000568_alpine-green.webp" },
   { link: "https://shopdunk.com/images/thumbs/0000575_alpine-green_550.webp" },
@@ -33,21 +34,7 @@ const ProductDetail = () => {
           </li>
         </ul>
         <div className="grid grid-cols-2 product-box">
-          <div className="box-img">
-            <div
-              className="product-image rounded-lg p-8 mb-2"
-              style={{
-                width: "588px",
-                height: "588px",
-                backgroundColor: "#f5f5f7",
-              }}
-            >
-              <img src={images[0].link} alt="" />
-            </div>
-            <div className="slider overflow-hidden" style={{ width: "588px" }}>
-              <SliderBrand images={images} node={"slideProduct"} />
-            </div>
-          </div>
+          <ShowProduct images={images} />
           <div className=" bg-black h-96">dsdss </div>
         </div>
       </div>
