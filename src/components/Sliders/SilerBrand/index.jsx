@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { memo, useRef, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -7,11 +7,8 @@ import "./SlideBrand.scss";
 import ImageSlide from "./ImageSlide";
 import ImageProduct from "./ImageProduct";
 
-function SliderBrand({ images, ...prev }) {
+const SliderBrand = memo(({ images, onSelectImage, ...prev }) => {
   const [image, setImage] = useState("");
-  const handleSelectImage = (value) => {
-    setImage(value);
-  };
   let settings = {
     infinite: true,
     speed: 500,
@@ -40,7 +37,7 @@ function SliderBrand({ images, ...prev }) {
           prev.node &&
           images.map((image, index) => (
             <ImageProduct
-              onSelectImage={handleSelectImage}
+              onSelectImage={onSelectImage}
               image={image.link}
               key={index}
             />
@@ -51,6 +48,6 @@ function SliderBrand({ images, ...prev }) {
       </Slider>
     </div>
   );
-}
+});
 
 export default SliderBrand;

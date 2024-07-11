@@ -1,4 +1,6 @@
-const ImageProduct = ({ image, index, onSelectImage }) => {
+import { memo } from "react";
+
+const ImageProduct = memo(({ image, index, onSelectImage }) => {
   return (
     <div key={index} onClick={() => onSelectImage(image)}>
       <div className="thumb-item px-reduce-2 rounded-xl p-1 border-solid border-gray-400 border-1 ">
@@ -12,6 +14,6 @@ const ImageProduct = ({ image, index, onSelectImage }) => {
       </div>
     </div>
   );
-};
+});
 
 export default ImageProduct;

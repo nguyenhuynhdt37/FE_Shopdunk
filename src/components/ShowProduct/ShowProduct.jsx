@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import SliderBrand from "../Sliders/SilerBrand";
-import SliderImage from "../Sliders/SliderImage";
 
 const ShowProduct = ({ images }) => {
-  const handleSelectImage = (value) => {
-    setCurrentSlide(value);
-  };
+  const [image, setImage] = useState(images[0].link);
+  const handleSelectImage = useCallback((image) => {
+    setImage(image);
+  }, []);
   return (
     <div className="box-img">
       <div
@@ -16,7 +16,7 @@ const ShowProduct = ({ images }) => {
           backgroundColor: "#f5f5f7",
         }}
       >
-        <SliderImage />
+        <img src={image} alt="" className="image_show" />;
       </div>
       <div className="slider overflow-hidden" style={{ width: "588px" }}>
         <SliderBrand

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
-import SliderImage from "../SliderImage";
+import SliderImage from "../SilerBrand/SliderImage";
 const images = [
   {
     id: 1,
