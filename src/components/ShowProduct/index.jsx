@@ -1,7 +1,8 @@
 import { useCallback, useState } from "react";
 import SliderBrand from "../Sliders/SilerBrand";
 
-const ShowProduct = ({ images }) => {
+const ShowProduct = ({ imageProduct }) => {
+  const { images } = imageProduct;
   const [image, setImage] = useState(images[0].link);
   const handleSelectImage = useCallback((image) => {
     setImage(image);
@@ -9,7 +10,7 @@ const ShowProduct = ({ images }) => {
   return (
     <div className="box-img">
       <div
-        className="product-image rounded-lg p-8 mb-2"
+        className="product-image rounded-lg p-8 mb-6"
         style={{
           width: "588px",
           height: "588px",

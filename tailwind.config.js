@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       boxShadow: {
         item: "2px 1px 28px 0px rgb(0 0 0 / 12%)",
+        button_color: "inset 1px 1px 2px rgb(0 0 0 / 10%);",
       },
       spacing: {
         4.5: "2rem",
@@ -18,6 +19,20 @@ module.exports = {
       },
       padding: {
         "reduce-2": "2px",
+      },
+      width: {
+        43: "10rem",
+      },
+      height: {
+        42: "9.1rem",
+      },
+      padding: {
+        4.5: "1.5rem",
+        3.5: "0.8rem",
+      },
+      colors: {
+        primary1: "#0066CC",
+        "color-old": "#999",
       },
     },
   },

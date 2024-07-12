@@ -1,4 +1,4 @@
-import { memo, useRef, useState } from "react";
+import { memo, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -8,7 +8,9 @@ import ImageSlide from "./ImageSlide";
 import ImageProduct from "./ImageProduct";
 
 const SliderBrand = memo(({ images, onSelectImage, ...prev }) => {
+  console.log(images);
   const [image, setImage] = useState("");
+
   let settings = {
     infinite: true,
     speed: 500,
@@ -22,29 +24,31 @@ const SliderBrand = memo(({ images, onSelectImage, ...prev }) => {
     pauseOnHover: true,
     pauseOnFocus: true,
   };
+
   if (prev.node === "slideProduct") {
     settings = {
       ...settings,
-      slidesToShow: 5,
-      centerMode: true,
+      slidesToShow: 6,
+      slidesToScroll: 5, // Nhảy 5 slide khi nhấn nút "Next"
+      centerMode: false,
       autoplay: false,
     };
   }
+
   return (
     <div>
-      <Slider className="w-full" {...settings}>
-        {(prev &&
-          prev.node &&
-          images.map((image, index) => (
-            <ImageProduct
-              onSelectImage={onSelectImage}
-              image={image.link}
-              key={index}
-            />
-          ))) ||
-          images.map((image, index) => (
-            <ImageSlide image={image.link} key={index} />
-          ))}
+      <Slider className="w-full box-slide" {...settings}>
+        {prev.node
+          ? images.map((image, index) => (
+              <ImageProduct
+                onSelectImage={onSelectImage}
+                image={image.link}
+                key={index}
+              />
+            ))
+          : images.map((image, index) => (
+              <ImageSlide image={image.Link} key={index} />
+            ))}
       </Slider>
     </div>
   );
