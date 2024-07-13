@@ -30,6 +30,9 @@ module.exports = {
         4.5: "1.5rem",
         3.5: "0.8rem",
       },
+      fontSize: {
+        "1.7xl": "1.4rem",
+      },
       colors: {
         primary1: "#0066CC",
         "color-old": "#999",

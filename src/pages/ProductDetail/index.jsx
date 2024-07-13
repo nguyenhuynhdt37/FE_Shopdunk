@@ -4,6 +4,10 @@ import "./ProductDetail.scss";
 import { ButtonColorBox } from "../../components/ProductDetail/Button";
 import Promotion from "../../components/ProductDetail/Promotion";
 import ShowProduct from "../../components/ShowProduct";
+import ButtonStorageBox from "../../components/ProductDetail/Button/ButtonStorage";
+import ProductParameters from "../../components/ProductDetail/ProductParameters";
+import { IoIosCheckmarkCircle } from "react-icons/io";
+
 const productInfo = {
   name: "iPhone 13",
   colors: [
@@ -62,7 +66,7 @@ const productInfo = {
       ],
     },
   ],
-  storage: [
+  storages: [
     {
       id: 0,
       name: "128GB",
@@ -93,8 +97,8 @@ const ProductDetail = () => {
   return (
     <div className=" bg-white text-xl">
       <div className="product-deails container p-0">
-        <ul className="list-url flex py-4 text-1.5xl text-gray-700">
-          <li className="url mr-2">
+        <ul className="list-url  flex py-4 text-1.5xl text-gray-700">
+          <li className="url mr-2 ">
             <Link to="/">Home</Link>
             <ChevronRight className="w-10 ms-2" />
           </li>
@@ -110,32 +114,56 @@ const ProductDetail = () => {
             <Link to="/">{productInfo.name}</Link>
           </li>
         </ul>
-        <div className="grid grid-cols-2 product-box">
+        <div className=" relative grid grid-cols-2 product-box">
           <ShowProduct imageProduct={productInfo.colors[1]} />
-          <div className="ps-14">
+          <div className="ps-14  pb-16">
             <h4 className="product_name text-4xl font-normal mb-3">
               {productInfo.name}
             </h4>
             <div className="h-0.5 bg-slate-200"></div>
-            <div className="product-price flex mt-7 mb-9 items-center">
-              <div className="current-price text-4xl font-bold mr-8 text-primary1">
-                13.690.000₫
-              </div>
-              <div className="old-price text-2.5xl text-color-old line-through">
-                24.690.000₫
-              </div>
-            </div>
-            <div className="product_storage">
-              <div className="title mb-6">Storage</div>
-              {/* <ButtonStorageBox storages={productInfo.storage} /> */}
-            </div>
+            <ButtonStorageBox storages={productInfo.storages} />
             <div className="product_color mt-8">
               <div className="title mb-6">Color</div>
               <ButtonColorBox />
             </div>
             <Promotion />
+            <button
+              type="button"
+              className="btn w-full h-24 text-2xl font-bold uppercase mt-8 btn-primary"
+            >
+              Buy Now
+            </button>
+            <div className="prd-policy rounded-xl p-6 border-1 mt-7 leading-10">
+              <div className="polocy-item flex items-center">
+                <IoIosCheckmarkCircle className="text-3xl mr-4 text-primary1" />
+                Bộ sản phẩm gồm: Hộp, Sách hướng dẫn, Cây lấy sim, Cáp Type C
+              </div>
+              <div className="polocy-item flex items-center">
+                <IoIosCheckmarkCircle className="text-3xl mr-4 text-primary1" />
+                Giao hàng nhanh toàn quốc
+                <a href="" className="font-bold ms-2 text-primary1">
+                  (chi tiết)
+                </a>
+              </div>
+              <div className="polocy-item flex items-center">
+                <IoIosCheckmarkCircle className="text-3xl mr-4 text-primary1" />
+                Bảo hành chính hãng 1 năm
+                <a href="" className="font-bold ms-2 text-primary1">
+                  (chi tiết)
+                </a>
+              </div>
+              <div className="polocy-item flex items-center">
+                <IoIosCheckmarkCircle className="text-3xl mr-4 text-primary1" />
+                Gọi đặt mua
+                <span className="text-primary1 mx-2">1900.6626</span>
+                <a href="tel:19006626" className="font-bold  text-primary1">
+                  (chi tiết)
+                </a>
+              </div>
+            </div>
           </div>
         </div>
+        <ProductParameters />
       </div>
     </div>
   );

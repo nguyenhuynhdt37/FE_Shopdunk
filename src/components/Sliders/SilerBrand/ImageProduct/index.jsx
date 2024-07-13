@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useEffect } from "react";
 
 const ImageProduct = memo(({ image, index, onSelectImage }) => {
   return (

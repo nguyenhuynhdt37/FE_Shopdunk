@@ -1,0 +1,7 @@
+@import "../../GlobalStyle/GlobalStyle.scss";
+.parameters-option {
+  button.active {
+    color: $color-primary !important;
+    border-color: $color-primary !important;
+  }
+}

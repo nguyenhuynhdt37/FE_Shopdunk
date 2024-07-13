@@ -8,7 +8,7 @@ const ShowProduct = ({ imageProduct }) => {
     setImage(image);
   }, []);
   return (
-    <div className="box-img">
+    <div className="box-img sticky top-28" style={{ height: "69.5rem" }}>
       <div
         className="product-image rounded-lg p-8 mb-6"
         style={{
