@@ -1,7 +1,8 @@
 import React from "react";
 import ButtonColor from "./ButtonColor";
 
-const ButtonColorBox = () => {
+const ButtonColorBox = ({ colors }) => {
+  console.log(colors);
   return (
     <div className="flex">
       <ButtonColor />

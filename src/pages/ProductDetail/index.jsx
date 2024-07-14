@@ -124,12 +124,12 @@ const ProductDetail = () => {
             <ButtonStorageBox storages={productInfo.storages} />
             <div className="product_color mt-8">
               <div className="title mb-6">Color</div>
-              <ButtonColorBox />
+              <ButtonColorBox colors={productInfo.colors} />
             </div>
             <Promotion />
             <button
               type="button"
-              className="btn w-full h-24 text-2xl font-bold uppercase mt-8 btn-primary"
+              className="btn rounded-xl bg-primary1 w-full h-24 text-2xl font-bold uppercase mt-8 btn-primary"
             >
               Buy Now
             </button>
