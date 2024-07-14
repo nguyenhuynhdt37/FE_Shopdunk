@@ -24,7 +24,6 @@ function PrevArrow(props) {
 
 function NextArrow(props) {
   const { className, style, onClick } = props;
-  console.log(className);
   return (
     <div
       className={className}

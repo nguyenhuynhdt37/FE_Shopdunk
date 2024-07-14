@@ -8,7 +8,6 @@ import ImageSlide from "./ImageSlide";
 import ImageProduct from "./ImageProduct";
 
 const SliderBrand = memo(({ images, onSelectImage, ...prev }) => {
-  console.log(images);
   const [image, setImage] = useState("");
 
   let settings = {

@@ -1,0 +1,56 @@
+{
+    "Quay video": {
+      "Độ phân giải": "4K, HD 1080p",
+      "Tốc độ khung hình": "24 fps, 25 fps, 30 fps, 50 fps, 60 fps, 120 fps, 240 fps",
+      "Chế độ quay": "Điện Ảnh, Hành Động, HDR, QuickTake, Tua nhanh, Tua nhanh ban đêm",
+      "Tính năng khác": "Chống rung quang học, Phóng đại âm thanh, Thu âm stereo"
+    },
+    "Màu sắc": ["Xanh lá", "Vàng", "Tím", "Đen"],
+    "Dung lượng": ["128GB", "256GB", "512GB"],
+    "Kết nối": {
+      "Mạng di động": "Hỗ trợ 5G",
+      "SIM": "Đang cập nhật",
+      "Wifi": "Wifi 6 GHz, Wi-Fi 802.11 a/b/g/n/ac/ax",
+      "GPS": "BEIDOU, GALILEO, GLONASS, A-GPS, QZSS",
+      "Bluetooth": "v5.3",
+      "Cổng sạc": "USB Type-C 20",
+      "Jack tai nghe": "Type-C"
+    },
+    "Kích thước và Trọng lượng": {
+      "Dài": "147.5 mm",
+      "Rộng": "71.5 mm",
+      "Dày": "7.80 mm",
+      "Trọng lượng": "171 gram"
+    },
+    "Độ phân giải màn hình": "2556 x 1179 Pixels",
+    "Chống nước - Chống bụi": "IP68 (Chống nước ở độ sâu tối đa 6 mét trong vòng tối đa 30 phút theo tiêu chuẩn IEC 60529)",
+    "Chip": {
+      "CPU": "Apple A16 Bionic 6 nhân",
+      "Tốc độ CPU": "3.46 GHz",
+      "GPU": "Apple GPU 5 nhân"
+    },
+    "Pin và nguồn điện": {
+      "Dung lượng pin": "Đang cập nhật",
+      "Loại pin": "Li-ion",
+      "Sạc": "Hỗ trợ sạc nhanh, Sạc không dây, Sạc không dây MagSafe",
+      "Bộ sạc kèm theo máy": "Đang cập nhật",
+      "Công nghệ pin": "Đang cập nhật"
+    },
+    "Camera sau": {
+      "Chính": "48 MP",
+      "Phụ": "12 MP"
+    },
+    "Bảo mật": "Face ID",
+    "Camera trước": "TrueDepth 12 MP, hỗ trợ nhận diện khuôn mặt",
+    "Kết nối mạng": {
+      "Mạng di động": "GSM/EDGE, UMTS/HSPA, DC-HSDPA, 5G (sub-6 GHz) với 4x4 MIMO, LTE",
+      "Wifi": "Wifi 6",
+      "Công nghệ khác": "Bluetooth 5.3, Chip Ultra Wideband thế hệ thứ 2, GPS, GLONASS, Galileo, QZSS và BeiDou, NFC có chế độ đọc, Cuộc gọi Wi-Fi, Thẻ Truy Cập Nhanh với chế độ dự trữ năng lượng"
+    },
+    "Công nghệ màn hình": {
+      "Loại màn hình": "Super Retina XDR OLED",
+      "Tính năng": "Dynamic Island, HDR display, True Tone, Wide color (P3), Haptic Touch, Lớp phủ oleophobic chống dấu vân tay",
+      "Độ sáng tối đa": "2000 nits"
+    }
+  }
+  

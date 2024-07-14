@@ -4,14 +4,14 @@ import { IoIosCheckmarkCircle } from "react-icons/io";
 import { FaCreditCard } from "react-icons/fa6";
 const Promotion = () => {
   return (
-    <div className="product-promotion rounded border-1 mt-7">
+    <div className="product-promotion rounded-xl border-1 mt-7">
       <div className="puchathing-method  p-6">
         <div className="title flex items-center text-2xl font-bold">
           <FaCreditCard className="text-3xl mr-4" />
           Purchasing method
         </div>
         <div className="buy-straight mt-6 flex font-medium text-2xl text-zinc-600 items-center">
-          <input type="radio" checked className="mr-3" />
+          <input type="radio" className="mr-3" />
           Buy straight
         </div>
       </div>

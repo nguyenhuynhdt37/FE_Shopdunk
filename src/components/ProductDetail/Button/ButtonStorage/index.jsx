@@ -3,7 +3,6 @@ import ButtonStorage from "./ButtonStorage";
 
 const ButtonStorageBox = ({ storages }) => {
   const [active, setActive] = useState(0);
-  console.log("active ", active);
   const handleSelect = (active) => setActive(active);
   return (
     <>

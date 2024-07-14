@@ -47,13 +47,19 @@ function ProductParameters() {
       <div className="parameters-option text-center">
         <button
           type="button"
-          className=" active mx-3 inline-block px-8 py-3.5 border-1  text-1.7xl rounded-xl"
+          onClick={() => setActive(0)}
+          className={`${
+            active === 0 && "active"
+          } mx-3 inline-block px-8 py-3.5 border-1  text-1.7xl rounded-xl`}
         >
           Mô tả sản phẩm
         </button>
         <button
           type="button"
-          className=" mx-3 inline-block px-8 py-3.5 border-1 rounded-xl text-1.7xl"
+          onClick={() => setActive(1)}
+          className={`${
+            active === 1 && "active"
+          } mx-3 inline-block px-8 py-3.5 border-1  text-1.7xl rounded-xl`}
         >
           Thông số kỹ thuật
         </button>
