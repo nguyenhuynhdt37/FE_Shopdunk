@@ -27,11 +27,9 @@ const images = [
 ];
 const HomePage = () => {
   return (
-    <>
-      <div className="slider mb-5">
-        <Slide />
-      </div>
-      <div className="container pt-5 ">
+    <div>
+      <div className="mb-5">{/* <Slide /> */}</div>
+      <div className="container pt-5 mx-auto">
         <div className="sider-brand mb-5">
           <SilerBrand images={images} />
         </div>
@@ -52,7 +50,7 @@ const HomePage = () => {
           <HomeNew />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

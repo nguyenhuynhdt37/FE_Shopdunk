@@ -7,22 +7,22 @@ const ListBoxProduct = ({ title, listProduct }) => {
     <div className="list-item mt-4">
       <div
         style={{ fontSize: "3rem" }}
-        className="title pt-5 fw-bold text-center"
+        className="title pt-7 font-bold text-center"
       >
         iPhone
       </div>
-      <div className="row container-items mt-3">
+      <div className="grid grid-cols-4 gap-7 mt-5">
         <ItemProduct />
         <ItemProduct />
         <ItemProduct />
         <ItemProduct />
       </div>
-      <div className="more mt-5 justify-content-center d-flex">
+      <div className="more mt-10 justify-center flex">
         <button
           type="button"
-          className="btn btn-more fs-5 rounded-4 d-flex align-items-center justify-content-center"
+          className="border-primary1 rounded-2xl text-1.5xl border-1 flex items-center px-16 py-4 text-primary1 hover:bg-primary1 hover:text-white"
         >
-          <span className="me-2">Sell All iPhone</span>
+          <span className="me-2">Xem tất cả iPhone</span>
           <FontAwesomeIcon style={{ fontSize: "1.6rem" }} icon={faAngleRight} />
         </button>
       </div>

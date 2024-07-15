@@ -3,30 +3,28 @@ import "./ItemProduct.scss";
 import { Link } from "react-router-dom";
 const ItemProduct = () => {
   return (
-    <div className="col-3">
-      <Link to="/iphone">
-        <div className="box-item bg-white">
-          <div className="box-image">
-            <img
-              src="https://shopdunk.com/images/thumbs/0024430_iphone-13_240.png"
-              alt=""
-              className="img object-fit-cover w-100"
-            />
-          </div>
-          <div className="info-product mt-5 mb-4 fs-3 fw-bold d-flex ">
-            <div className="product-name me-2">iPhone 15</div>
-            <div className="product-storage text-uppercase">128gb</div>
-          </div>
-          <div className="product-price d-flex fs-4 align-items-center pt-2">
-            <div className="product__price--current me-3">13.690.000₫</div>
-            <div className="product__price--old me-3 fs-5 text-secondary">
-              24.990.000₫
-            </div>
-            <div className="percent-discount text-secondary fs-5">-45%</div>
-          </div>
+    <Link to="/iphone">
+      <div className="box-item bg-white">
+        <div className="box-image pt-5">
+          <img
+            src="https://shopdunk.com/images/thumbs/0024430_iphone-13_240.png"
+            alt=""
+            className="img object-cover w-full"
+          />
         </div>
-      </Link>
-    </div>
+        <div className="info-product mt-10 mb-8 text-2.5xl font-bold flex ">
+          <div className="product-name mr-2">iPhone 13</div>
+          <div className="product-storage uppercase">128gb</div>
+        </div>
+        <div className="product-price flex text-2xl items-center pb-2">
+          <div className="text-primary1 font-bold me-3">13.690.000₫</div>
+          <div className="product__price--old me-3 text-xl text-zinc-400">
+            24.990.000₫
+          </div>
+          <div className="percent-discount text-xl text-zinc-400">-45%</div>
+        </div>
+      </div>
+    </Link>
   );
 };
 

@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.scss";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import GlobalStyle from "./components/GlobalStyle";
 import { BrowserRouter as Router } from "react-router-dom";
 

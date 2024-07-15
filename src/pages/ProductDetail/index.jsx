@@ -1,4 +1,3 @@
-import { ChevronRight } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import "./ProductDetail.scss";
 import { ButtonColorBox } from "../../components/ProductDetail/Button";
@@ -7,13 +6,14 @@ import ShowProduct from "../../components/ShowProduct";
 import ButtonStorageBox from "../../components/ProductDetail/Button/ButtonStorage";
 import ProductParameters from "../../components/ProductDetail/ProductParameters";
 import { IoIosCheckmarkCircle } from "react-icons/io";
+import { RxCaretRight } from "react-icons/rx";
 
 const productInfo = {
   name: "iPhone 13",
   colors: [
     {
       id: 0,
-      color: "green",
+      color: "midnightGreen",
       images: [
         {
           link: "https://shopdunk.com/images/thumbs/0000568_alpine-green.webp",
@@ -86,31 +86,25 @@ const productInfo = {
       oldPrice: "34690000",
     },
   ],
-  color: [
-    { name: "black" },
-    { name: "pink" },
-    { name: "red" },
-    { name: "blue" },
-  ],
 };
 const ProductDetail = () => {
   return (
-    <div className=" bg-white text-xl">
+    <div className="container mx-auto bg-white text-xl">
       <div className="product-deails container p-0">
         <ul className="list-url  flex py-4 text-1.5xl text-gray-700">
-          <li className="url mr-2 ">
+          <li className="url mr-2 flex items-center ">
             <Link to="/">Home</Link>
-            <ChevronRight className="w-10 ms-2" />
+            <RxCaretRight className="w-10 ms-2" />
           </li>
-          <li className="url mr-2">
+          <li className="url  flex items-center">
             <Link to="/">iPhone</Link>
-            <ChevronRight className="w-10 ms-2" />
+            <RxCaretRight className="w-10 ms-2" />
           </li>
-          <li className="url mr-2">
+          <li className="url  flex items-center">
             <Link to="/">iPhone 13 series</Link>
-            <ChevronRight className="w-10 ms-2" />
+            <RxCaretRight className="w-10 ms-2" />
           </li>
-          <li className="url mr-2">
+          <li className="url  flex items-center">
             <Link to="/">{productInfo.name}</Link>
           </li>
         </ul>

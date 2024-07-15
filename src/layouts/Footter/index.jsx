@@ -2,42 +2,40 @@ import "./Footer.scss";
 const Footer = () => {
   return (
     <div className="footer-box">
-      <div className="container p-0">
-        <div className="row footer-box-router">
-          <div
-            className="col-4 ps-0 pe-5"
-            style={{ paddingRight: "4.5rem !important" }}
-          >
+      <div className="container p-0 mx-auto">
+        <div className="grid grid-cols-3">
+          <div className="col-span-1 ps-0 pr-24.5">
             <div className="footer-logo">
               <img
-                className="w-50 object-fit-cover"
+                className="w-72"
                 src="https://shopdunk.com/images/thumbs/0027333_logo-shopdunk.png"
                 alt=""
               />
             </div>
             <div className="footer-decription">
-              In 2020, ShopDunk became an authorized Apple dealer. We develop a
-              chain of standard stores and Apple Mono Stores to bring the best
-              experience of Apple products and services to Vietnamese users.
+              Năm 2020, ShopDunk trở thành đại lý ủy quyền của Apple. Chúng tôi
+              phát triển chuỗi cửa hàng tiêu chuẩn và Apple Mono Store nhằm mang
+              đến trải nghiệm tốt nhất về sản phẩm và dịch vụ của Apple cho
+              người dùng Việt Nam.
             </div>
-            <div className="custom-box p-3 rounded-4 mb-5">
-              <div className="custom-title my-3 text-dark fw-bolder">
+            <div className="custom-box p-5 rounded-xl mb-5">
+              <div className="custom-title mt-6 mb-8 text-black font-bold">
                 Support switchboard :
               </div>
-              <div className="custom-decription d-flex align-items-end justify-content-center text-dark mb-3">
-                <div className="title fs-5 me-2">Buy product:</div>
-                <div className="phone-number fs-4">
+              <div className="custom-decription flex items-end justify-center text-black mb-3">
+                <div className="title text-xl mr-2">Buy product:</div>
+                <div className="phone-number text-2xl">
                   1900.6626 (08:00 - 22:00)
                 </div>
               </div>
-              <div className="custom-decription d-flex mb-3 align-items-end justify-content-center  text-dark">
-                <div className="title fs-5 me-2">Guarantee:</div>
-                <div className="phone-number fs-4">
+              <div className="custom-decription flex items-end justify-center text-black mb-3">
+                <div className="title text-xl mr-2">Guarantee:</div>
+                <div className="phone-number text-2xl">
                   1900.6626 (08:00 - 22:00)
                 </div>
               </div>
             </div>
-            <div className="media-chanel pt-4 d-flex">
+            <div className="media-chanel pt-14 flex">
               <div className="fb-box">
                 <img src="/assets/icons/icon-fb.png" alt="" />
               </div>
@@ -49,8 +47,8 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="col-8 ">
-            <div className="row">
+          <div className="col-span-2">
+            <div className="grid grid-cols-3">
               <div className="col-4 ps-5">
                 <div className="title mb-3">Infomation</div>
                 <ul className="p-0">
@@ -94,24 +92,34 @@ const Footer = () => {
           </div>
         </div>
         <div className="certification w-100"></div>
-        <div className="footer-lower pt-4 pb-4">
-          <div className="footer-disclaimer row ">
-            <div className="footer-certificate col-10">
-              © 2016 Công ty Cổ Phần HESMAN Việt Nam GPDKKD: 0107465657 do Sở KH & ĐT TP. Hà Nội cấp ngày 08/06/2016.
+        <div className="footer-lower pt-9 pb-4">
+          <div className="footer-disclaimer grid grid-cols-8">
+            <div className="footer-certificate  col-span-7">
+              © 2016 Công ty Cổ Phần HESMAN Việt Nam GPDKKD: 0107465657 do Sở KH
+              & ĐT TP. Hà Nội cấp ngày 08/06/2016.
               <br />
-              Địa chỉ: Số 76 Thái Hà, phường Trung Liệt, quận Đống Đa, thành phố Hà Nội, Việt Nam
+              Địa chỉ: Số 76 Thái Hà, phường Trung Liệt, quận Đống Đa, thành phố
+              Hà Nội, Việt Nam
               <br />
-              Đại diện pháp luật: PHẠM MẠNH HÒA | ĐT: 0247.305.9999 | Email: lienhe@shopdunk.com
+              Đại diện pháp luật: PHẠM MẠNH HÒA | ĐT: 0247.305.9999 | Email:
+              lienhe@shopdunk.com
             </div>
-            <div className="icon col-2 text-end">
-              <a className="w-100 text-end" href="http://online.gov.vn/(X(1)S(jfktnnku5rui3vjf5pnk4sgc))/Home/WebDetails/34144?AspxAutoDetectCookieSupport=1" className="navigation-certificate">
-                <img src="/assets/images/mores/chungchi-bocongthuong.png" className="w-75" alt="" />
+            <div className="icon text-end">
+              <a
+                className="w-full text-end"
+                href="http://online.gov.vn/(X(1)S(jfktnnku5rui3vjf5pnk4sgc))/Home/WebDetails/34144?AspxAutoDetectCookieSupport=1"
+              >
+                <img
+                  src="/assets/images/mores/chungchi-bocongthuong.png"
+                  className="w-75"
+                  alt=""
+                />
               </a>
             </div>
           </div>
         </div>
       </div>
-    </div >
+    </div>
   );
 };
 

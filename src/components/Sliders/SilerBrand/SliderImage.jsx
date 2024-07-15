@@ -1,7 +1,7 @@
 const SliderImage = ({ image }) => {
   return (
     <>
-      <img  src={image.url} className="w-100" alt="" />{" "}
+      <img src={image.url} className="w-100" alt="" />
     </>
   );
 };

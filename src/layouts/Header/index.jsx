@@ -1,78 +1,73 @@
-import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
-import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
-import { IoSearch } from "react-icons/io5";
+import { Link } from "react-router-dom";
+import { IoIosSearch } from "react-icons/io";
+import { LiaUser } from "react-icons/lia";
 import "./Header.scss";
 const Header = () => {
   return (
     <header
-      style={{
-        height: "6.4rem",
-        backgroundColor: " #515154",
-        zIndex: "2",
-      }}
-      className="header__box w-100 position-fixed"
+      className="header__box w-full bg-bgHeader sticky top-0 z-10"
+      style={{ height: "6.4rem" }}
     >
-      <div
-        style={{ width: "120rem", margin: "0 auto" }}
-        className="header_container h-100 d-flex align-items-center justify-content-between"
-      >
-        <div className="header__logo--box h-100 d-flex align-items-center">
+      <div className="container mx-auto my-0 h-full flex items-center justify-between">
+        <div className="header__logo--box h-full flex items-center">
           <div className="boxx2">
             <img
               src="https://shopdunk.com/images/thumbs/0027333_logo-shopdunk.png"
               alt="logo"
-              className="header_logo object-fit-cover"
+              className="header_logo object-cover"
               style={{ width: "17.5rem" }}
             />
           </div>
         </div>
-        <ul className="header__router--box d-flex justify-content-around w-100 flex-fill h-100">
-          <li className="header__router--item px-4 py-4 fs-4 h-100 d-block d-flex align-items-center ">
+        <ul className="header__router--box h-full flex flex-1 justify-around">
+          <li className=" hover:bg-bgHeaderHover text-textHeader px-6 py-6 text-2xl h-full flex items-center ">
             <a href="/">iPhone</a>
           </li>
-          <li className="header__router--item px-4 py-4 fs-4 h-100 d-block d-flex align-items-center ">
+          <li className=" hover:bg-bgHeaderHover text-textHeader px-6 py-6 text-2xl h-full flex items-center">
             <a href="/">iPad</a>
           </li>
-          <li className="header__router--item px-4 py-4 fs-4 h-100 d-block d-flex align-items-center ">
+          <li className=" hover:bg-bgHeaderHover text-textHeader px-6 py-6 text-2xl h-full flex items-center">
             <a href="/">Mac</a>
           </li>
-          <li className="header__router--item px-4 py-4 fs-4 h-100 d-block d-flex align-items-center ">
+          <li className=" hover:bg-bgHeaderHover text-textHeader px-6 py-6 text-2xl h-full flex items-center">
             <a href="/">Watch</a>
           </li>
-          <li className="header__router--item px-4 py-4 fs-4 h-100 d-block d-flex align-items-center ">
+          <li className=" hover:bg-bgHeaderHover text-textHeader px-6 py-6 text-2xl h-full flex items-center">
             <a href="/">Old Product</a>
           </li>
-          <li className="header__router--item px-4 py-4 fs-4 h-100 d-block d-flex align-items-center ">
+          <li className=" hover:bg-bgHeaderHover text-textHeader px-6 py-6 text-2xl h-full flex items-center">
             <a href="/">Accessory</a>
           </li>
-          <li className="header__router--item px-4 py-4 fs-4 h-100 d-block d-flex align-items-center ">
+          <li className=" hover:bg-bgHeaderHover text-textHeader px-6 py-6 text-2xl h-full flex items-center">
             <a href="/">Service</a>
           </li>
-          <li className="header__router--item px-4 py-4 fs-4 h-100 d-block d-flex align-items-center ">
+          <li className=" hover:bg-bgHeaderHover text-textHeader px-6 py-6 text-2xl h-full flex items-center">
             <a href="/">News</a>
           </li>
-          <li className="header__router--item px-4 py-4 fs-4 h-100 d-block d-flex align-items-center ">
+          <li className=" hover:bg-bgHeaderHover text-textHeader px-6 py-6 text-2xl h-full flex items-center">
             <a href="/">Discount</a>
           </li>
         </ul>
-        <div className="header_features h-100 d-flex align-items-center fs-5">
-          <IoSearch className="header-icon" />
-          <div className="header-cart ">
-            <ShoppingBagOutlinedIcon className="header-icon" />
+        <div className="header_features h-100 flex items-center cursor-pointer fs-5 text-white text-4xl">
+          <IoIosSearch className="mr-4" />
+          <div className="icon-cart mr-4">
+            <Link to="/cart">
+              <img src="/assets/icons/icon-cart.png" className="w-9" alt="" />
+            </Link>
           </div>
-          <PersonOutlineOutlinedIcon className="header-icon" />
-          <div className="box-vn position-relative" style={{ width: "2rem" }}>
+          <LiaUser className="mr-4" />
+          <div className="box-vn mr-4" style={{ width: "2rem" }}>
             <img
-              className="langue-vi position-absolute top-50 translate-middle-y"
+              className="langue-vi "
               src="https://shopdunk.com/images/flags/vn.png"
               alt=""
             />
           </div>
-          <div className="box-en position-relative" style={{ width: "2rem" }}>
+          <div className="box-en" style={{ width: "2rem" }}>
             <img
               src="https://shopdunk.com/images/flags/us.png"
               alt=""
-              className="langue-en position-absolute top-50 translate-middle-y"
+              className="langue-en"
             />
           </div>
         </div>

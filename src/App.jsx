@@ -5,7 +5,7 @@ const App = () => {
   return (
     <div className="box-root w-100">
       <Header />
-      <div className="w-100 m-0" style={{ paddingTop: "6.4rem" }}>
+      <div className="w-full m-0 bg-backgroudDefault">
         <AppRouters />
       </div>
       <footer>

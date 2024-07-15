@@ -1,6 +1,7 @@
-import { useState } from "react";
-import Carousel from "react-bootstrap/Carousel";
+import React from "react";
+import Slider from "react-slick";
 import SliderImage from "../SilerBrand/SliderImage";
+
 const images = [
   {
     id: 1,
@@ -19,22 +20,20 @@ const images = [
     url: "https://shopdunk.com/images/uploaded/banner/banner%202024/thang_6/banner%20watch%209%20T6_PC.jpg",
   },
 ];
-const Slide = () => {
-  const [index, setIndex] = useState(0);
 
-  const handleSelect = (selectedIndex) => {
-    setIndex(selectedIndex);
+export default function Slide() {
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
   };
-
   return (
-    <Carousel activeIndex={index} onSelect={handleSelect}>
-      {images.map((image) => (
-        <Carousel.Item key={image.id}>
-          <SliderImage image={image} />
-        </Carousel.Item>
+    <Slider className="bg-black" {...settings}>
+      {images.map((image, index) => (
+        <SliderImage key={index} image={image} />
       ))}
-    </Carousel>
+    </Slider>
   );
-};
-
-export default Slide;
+}

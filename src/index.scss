@@ -22,3 +22,8 @@ ul {
   margin: 0;
   padding: 0;
 }
+@media (min-width: 1280px) {
+  .container {
+    max-width: 120rem;
+  }
+}

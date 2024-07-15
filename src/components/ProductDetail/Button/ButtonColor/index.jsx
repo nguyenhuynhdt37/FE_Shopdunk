@@ -1,17 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import ButtonColor from "./ButtonColor";
 
 const ButtonColorBox = ({ colors }) => {
-  console.log(colors);
+  const [active, setActive] = useState(colors[0].id);
+  const handleSetActive = (id) => {
+    setActive(id);
+  };
   return (
     <div className="flex">
-      <ButtonColor />
-      <ButtonColor />
-      <ButtonColor />
-      <ButtonColor />
-      <ButtonColor />
-      <ButtonColor />
-      <ButtonColor />
+      {colors.map((color) => (
+        <ButtonColor
+          key={color}
+          onSetActive={handleSetActive}
+          isActive={active}
+          colorx={color}
+        />
+      ))}
     </div>
   );
 };

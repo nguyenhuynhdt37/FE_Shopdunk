@@ -1,11 +1,7 @@
-const ImageSlide = ({ image, index }) => {
+const ImageSlide = ({ image }) => {
   return (
-    <div key={index} className=" px-3 cursor-pointer">
-      <img
-        src={image}
-        alt={`Slide ${index}`}
-        className="img-fluid w-100 object-fit-cover"
-      />
+    <div className=" px-3 cursor-pointer">
+      <img src={image} className="img-fluid w-full object-cover" />
     </div>
   );
 };
