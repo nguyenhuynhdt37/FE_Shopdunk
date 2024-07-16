@@ -5,7 +5,7 @@ import "./Header.scss";
 const Header = () => {
   return (
     <header
-      className="header__box w-full bg-bgHeader sticky top-0 z-10"
+      className="header__box w-full bg-bgHeader sticky top-0 z-20"
       style={{ height: "6.4rem" }}
     >
       <div className="container mx-auto my-0 h-full flex items-center justify-between">

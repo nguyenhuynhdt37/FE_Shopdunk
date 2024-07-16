@@ -1,6 +1,5 @@
 import { useCallback, useState } from "react";
-import SliderBrand from "../Sliders/SilerBrand";
-
+import { SlideProduct } from "../Slide";
 const ShowProduct = ({ imageProduct }) => {
   const { images } = imageProduct;
   const [image, setImage] = useState(images[0].link);
@@ -12,19 +11,15 @@ const ShowProduct = ({ imageProduct }) => {
       <div
         className="product-image rounded-lg p-8 mb-6"
         style={{
-          width: "588px",
-          height: "588px",
+          width: "58.8rem",
+          height: "58.8rem",
           backgroundColor: "#f5f5f7",
         }}
       >
-        <img src={image} alt="" className="image_show" />;
+        <img src={image} alt="" className="image_show" />
       </div>
-      <div className="slider overflow-hidden" style={{ width: "588px" }}>
-        <SliderBrand
-          onSelectImage={handleSelectImage}
-          images={images}
-          node={"slideProduct"}
-        />
+      <div className="slider" style={{ width: "58.8rem" }}>
+        <SlideProduct onSelectImage={handleSelectImage} images={images} />
       </div>
     </div>
   );

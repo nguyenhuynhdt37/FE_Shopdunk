@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const ListBoxProduct = ({ title, listProduct }) => {
   return (
-    <div className="list-item mt-4">
+    <div className="mt-4">
       <div
         style={{ fontSize: "3rem" }}
         className="title pt-7 font-bold text-center"

@@ -89,75 +89,77 @@ const productInfo = {
 };
 const ProductDetail = () => {
   return (
-    <div className="container mx-auto bg-white text-xl">
-      <div className="product-deails container p-0">
-        <ul className="list-url  flex py-4 text-1.5xl text-gray-700">
-          <li className="url mr-2 flex items-center ">
-            <Link to="/">Home</Link>
-            <RxCaretRight className="w-10 ms-2" />
-          </li>
-          <li className="url  flex items-center">
-            <Link to="/">iPhone</Link>
-            <RxCaretRight className="w-10 ms-2" />
-          </li>
-          <li className="url  flex items-center">
-            <Link to="/">iPhone 13 series</Link>
-            <RxCaretRight className="w-10 ms-2" />
-          </li>
-          <li className="url  flex items-center">
-            <Link to="/">{productInfo.name}</Link>
-          </li>
-        </ul>
-        <div className=" relative grid grid-cols-2 product-box">
-          <ShowProduct imageProduct={productInfo.colors[1]} />
-          <div className="ps-14  pb-16">
-            <h4 className="product_name text-4xl font-normal mb-3">
-              {productInfo.name}
-            </h4>
-            <div className="h-0.5 bg-slate-200"></div>
-            <ButtonStorageBox storages={productInfo.storages} />
-            <div className="product_color mt-8">
-              <div className="title mb-6">Color</div>
-              <ButtonColorBox colors={productInfo.colors} />
-            </div>
-            <Promotion />
-            <button
-              type="button"
-              className="btn rounded-xl bg-primary1 w-full h-24 text-2xl font-bold uppercase mt-8 btn-primary"
-            >
-              Buy Now
-            </button>
-            <div className="prd-policy rounded-xl p-6 border-1 mt-7 leading-10">
-              <div className="polocy-item flex items-center">
-                <IoIosCheckmarkCircle className="text-3xl mr-4 text-primary1" />
-                Bộ sản phẩm gồm: Hộp, Sách hướng dẫn, Cây lấy sim, Cáp Type C
+    <div className="bg-white">
+      <div className="container mx-auto text-xl">
+        <div className="product-deails container p-0">
+          <ul className="list-url  flex py-4 text-1.5xl text-gray-700">
+            <li className="url mr-2 flex items-center ">
+              <Link to="/">Home</Link>
+              <RxCaretRight className="w-10 ms-2" />
+            </li>
+            <li className="url  flex items-center">
+              <Link to="/">iPhone</Link>
+              <RxCaretRight className="w-10 ms-2" />
+            </li>
+            <li className="url  flex items-center">
+              <Link to="/">iPhone 13 series</Link>
+              <RxCaretRight className="w-10 ms-2" />
+            </li>
+            <li className="url  flex items-center">
+              <Link to="/">{productInfo.name}</Link>
+            </li>
+          </ul>
+          <div className=" relative grid grid-cols-2 product-box">
+            <ShowProduct imageProduct={productInfo.colors[1]} />
+            <div className="ps-14  pb-16">
+              <h4 className="product_name text-4xl font-normal mb-3">
+                {productInfo.name}
+              </h4>
+              <div className="h-0.5 bg-slate-200"></div>
+              <ButtonStorageBox storages={productInfo.storages} />
+              <div className="product_color mt-8">
+                <div className="title mb-6">Color</div>
+                <ButtonColorBox colors={productInfo.colors} />
               </div>
-              <div className="polocy-item flex items-center">
-                <IoIosCheckmarkCircle className="text-3xl mr-4 text-primary1" />
-                Giao hàng nhanh toàn quốc
-                <a href="" className="font-bold ms-2 text-primary1">
-                  (chi tiết)
-                </a>
-              </div>
-              <div className="polocy-item flex items-center">
-                <IoIosCheckmarkCircle className="text-3xl mr-4 text-primary1" />
-                Bảo hành chính hãng 1 năm
-                <a href="" className="font-bold ms-2 text-primary1">
-                  (chi tiết)
-                </a>
-              </div>
-              <div className="polocy-item flex items-center">
-                <IoIosCheckmarkCircle className="text-3xl mr-4 text-primary1" />
-                Gọi đặt mua
-                <span className="text-primary1 mx-2">1900.6626</span>
-                <a href="tel:19006626" className="font-bold  text-primary1">
-                  (chi tiết)
-                </a>
+              <Promotion />
+              <button
+                type="button"
+                className="btn rounded-xl bg-primary1 w-full h-24 text-2xl font-bold uppercase mt-8 btn-primary"
+              >
+                Buy Now
+              </button>
+              <div className="prd-policy rounded-xl p-6 border-1 mt-7 leading-10">
+                <div className="polocy-item flex items-center">
+                  <IoIosCheckmarkCircle className="text-3xl mr-4 text-primary1" />
+                  Bộ sản phẩm gồm: Hộp, Sách hướng dẫn, Cây lấy sim, Cáp Type C
+                </div>
+                <div className="polocy-item flex items-center">
+                  <IoIosCheckmarkCircle className="text-3xl mr-4 text-primary1" />
+                  Giao hàng nhanh toàn quốc
+                  <a href="" className="font-bold ms-2 text-primary1">
+                    (chi tiết)
+                  </a>
+                </div>
+                <div className="polocy-item flex items-center">
+                  <IoIosCheckmarkCircle className="text-3xl mr-4 text-primary1" />
+                  Bảo hành chính hãng 1 năm
+                  <a href="" className="font-bold ms-2 text-primary1">
+                    (chi tiết)
+                  </a>
+                </div>
+                <div className="polocy-item flex items-center">
+                  <IoIosCheckmarkCircle className="text-3xl mr-4 text-primary1" />
+                  Gọi đặt mua
+                  <span className="text-primary1 mx-2">1900.6626</span>
+                  <a href="tel:19006626" className="font-bold  text-primary1">
+                    (chi tiết)
+                  </a>
+                </div>
               </div>
             </div>
           </div>
+          <ProductParameters />
         </div>
-        <ProductParameters />
       </div>
     </div>
   );
