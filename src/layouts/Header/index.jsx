@@ -55,7 +55,9 @@ const Header = () => {
               <img src="/assets/icons/icon-cart.png" className="w-9" alt="" />
             </Link>
           </div>
-          <LiaUser className="mr-4" />
+          <Link to="/register">
+            <LiaUser className="mr-4" />
+          </Link>
           <div className="box-vn mr-4" style={{ width: "2rem" }}>
             <img
               className="langue-vi "
