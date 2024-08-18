@@ -36,6 +36,7 @@ module.exports = {
         bgHeader: "#515154",
         bgHeaderHover: "#626265",
         textHeader: "#d2d2d7",
+        darkGreen: "#009914",
       },
       spacing: {
         4.5: "2rem",
@@ -44,6 +45,7 @@ module.exports = {
         "2.5xl": "1.8rem",
         "1.5xl": "1.4rem",
         "1.7xl": "1.4rem",
+        "10xl": "10rem",
       },
       borderWidth: {
         1: "1px",
