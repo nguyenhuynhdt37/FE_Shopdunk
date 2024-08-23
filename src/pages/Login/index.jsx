@@ -1,46 +1,56 @@
-import axios from "axios";
 import { useRef, useState } from "react";
 import { RxCaretRight } from "react-icons/rx";
 import { Link } from "react-router-dom";
 import LoadingBar from "react-top-loading-bar";
+import { login } from "../../api/userApi";
+import { isEmpty, isPasswordValid } from "../../../Utils/validation";
 
 const Login = () => {
+  const ref = useRef();
   const [data, setData] = useState({});
-  const [error, setError] = useState([]);
+  const [dataError, setDataError] = useState({});
+  const [rememberMe, setRememberMe] = useState(false);
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setData({ ...data, [name]: value });
-    if (error.length > 0) setError([]);
+    setDataError({ ...dataError, [name]: "", sever: [] });
+  };
+  const checkinValidation = () => {
+    let newError = {};
+    if (isEmpty(data.username))
+      newError.username = "Tài khoản không được bỏ trống";
+    if (!isEmpty(data.username) && data.username.length < 8) {
+      newError.username = "Tài khoản phải đủ 8 ký tự đổ lên";
+    }
+    if (!(!isEmpty(data.password) && isPasswordValid(data.password))) {
+      newError.password =
+        "Mật khẩu phải bao gồm 8 chữ số bao gồm chữ hoa, chữ thường và ký tự đặc biệt";
+    }
+    return newError;
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError([]);
-    try {
-      ref.current.continuousStart();
-      const datapost = {
-        UserName: data.username,
-        PasswordHash: data.password,
-      };
-      const apiUrl = import.meta.env.VITE_API_URL;
-      const response = await axios.post(`${apiUrl}/api/users/login`, datapost, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      if (response.status === 200) {
-        console.log(response.data);
-      } else {
-        console.log("không đăng nhập được");
-      }
-    } catch (error) {
-      console.log(error.response.data);
-
-      setError(error.response.data);
-    } finally {
-      ref.current.complete();
+    setDataError({});
+    const listError = checkinValidation();
+    if (Object.keys(listError).length > 0) {
+      setDataError(listError);
+      return;
     }
+    ref.current.continuousStart();
+    const datapost = {
+      UserName: data.username,
+      PasswordHash: data.password,
+    };
+    const { data: loginData, error: isError } = await login(datapost);
+    if (isError) {
+      setDataError({
+        sever: isError.response.data,
+      });
+    }
+    console.log(loginData);
+    ref.current.complete();
   };
-  const ref = useRef();
+
   return (
     <div className="bg-white">
       <LoadingBar color="#0066df" ref={ref} />
@@ -63,9 +73,9 @@ const Login = () => {
             />
           </div>
           <div className="col-span-5">
-            {error && error.length > 0 && (
+            {dataError.sever && (
               <div className="error pb-10">
-                {error.map((value, index) => {
+                {dataError.sever.map((value, index) => {
                   return (
                     <div className="error text-red text-2xl mb-30" key={index}>
                       {value}
@@ -85,6 +95,9 @@ const Login = () => {
                 value={data.username ?? ""}
                 onChange={(e) => handleInputChange(e)}
               />
+              {dataError.username && (
+                <p className="error pt-3 text-red">{dataError.username}</p>
+              )}
             </div>
             <div className="box-input text-2xl mb-8">
               <div className="title mb-2 font-medium">Mật khẩu:</div>
@@ -92,15 +105,20 @@ const Login = () => {
                 className="px-4 py-5 border rounded-xl w-full focus:outline-none focus:border-primary1"
                 type="password"
                 name="password"
-                value={data.password}
+                value={data.password ?? ""}
                 onChange={(e) => handleInputChange(e)}
               />
+              {dataError.password && (
+                <p className="error pt-3 text-red">{dataError.password}</p>
+              )}
             </div>
             <div className="function-more flex px-2 text-2xl justify-between">
               <div className="save-password flex items-center text-zinc-500">
                 <input
                   type="checkbox"
                   className="cursor-pointer mr-4 w-[1.6rem] h-[1.6rem]"
+                  checked={rememberMe}
+                  onChange={() => setRememberMe(!rememberMe)}
                 />
                 Nhớ mật khẩu
               </div>

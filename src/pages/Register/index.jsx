@@ -1,16 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { RxCaretRight } from "react-icons/rx";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   isEmailValid,
   isEmpty,
   isPasswordValid,
 } from "../../../Utils/validation";
-import axios from "axios";
 import LoadingBar from "react-top-loading-bar";
+import { registerApi } from "../../api/userApi";
 const Register = () => {
   const ref = useRef(null);
-
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -34,6 +34,9 @@ const Register = () => {
     let newErrors = {};
     if (isEmpty(formData.username)) {
       newErrors.username = "Tên tài khoản không được bỏ trống";
+    }
+    if (!isEmpty(formData.username) && formData.username < 8) {
+      newErrors.username = "Tài khoản phải đủ từ 8 ký tự đổ lên";
     }
     if (isEmpty(formData.password) || !isPasswordValid(formData.password)) {
       newErrors.password =
@@ -66,40 +69,19 @@ const Register = () => {
       PasswordHash: formData.password,
       email: formData.email,
     };
-    try {
-      ref.current.continuousStart(); // Bắt đầu thanh tiến trình
-      const apiUrl = import.meta.env.VITE_API_URL
-
-      console.log("fnskjdhfjksdfs: " + apiUrl);
-      const response = await axios.post(
-        `${apiUrl}/api/users/register`,
-        dataPost,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      if (response.status === 200 || response.status === 201) {
-        // Xử lý phản hồi thành công
-        alert("Đăng ký thành công!");
-      } else {
-        // Xử lý phản hồi thất bại
-        alert("Đăng ký thất bại");
-      }
-    } catch (e) {
-      if (e.response && e.response.status === 400) {
-        const codeError = e.response.data;
-        setError({
-          ...error,
-          username: codeError,
-        });
-      } else {
-        console.error("An unexpected error occurred:", e);
-      }
-    } finally {
-      ref.current.complete();
+    ref.current.continuousStart(); // Bắt đầu thanh tiến trình
+    const { data: valueData, error: valueError } = await registerApi(dataPost);
+    if (valueError) {
+      const codeError = valueError.response.data;
+      setError({
+        ...error,
+        username: codeError,
+      });
+    } else {
+      console.log(valueData);
+      navigate("/register/success");
     }
+    ref.current.complete();
   };
   return (
     <div className="bg-white">

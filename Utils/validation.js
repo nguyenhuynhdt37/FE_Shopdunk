@@ -24,5 +24,6 @@ export const isEmailValid = (email) => {
   return true;
 };
 export const isEmpty = (value) => {
+  if (value == null || value == undefined) return true;
   return value.trim() === "";
 };

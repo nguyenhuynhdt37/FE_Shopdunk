@@ -4,13 +4,18 @@ import App from "./App.jsx";
 import "./index.scss";
 import GlobalStyle from "./components/GlobalStyle";
 import { BrowserRouter as Router } from "react-router-dom";
+// import "antd/dist/antd.css";
+import { Provider } from "react-redux";
+import store from "./app/store.js";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Router>
-      <GlobalStyle>
-        <App />
-      </GlobalStyle>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <GlobalStyle>
+          <App />
+        </GlobalStyle>
+      </Router>
+    </Provider>
   </React.StrictMode>
 );
