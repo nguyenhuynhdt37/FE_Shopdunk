@@ -1,67 +1,67 @@
-import { Link } from "react-router-dom";
-import "./ProductDetail.scss";
-import { ButtonColorBox } from "../../components/ProductDetail/Button";
-import Promotion from "../../components/ProductDetail/Promotion";
-import ShowProduct from "../../components/ShowProduct";
-import ButtonStorageBox from "../../components/ProductDetail/Button/ButtonStorage";
-import ProductParameters from "../../components/ProductDetail/ProductParameters";
-import { IoIosCheckmarkCircle } from "react-icons/io";
-import { RxCaretRight } from "react-icons/rx";
+import { Link } from 'react-router-dom'
+import './ProductDetail.scss'
+import { ButtonColorBox } from '../../components/ProductDetail/Button'
+import Promotion from '../../components/ProductDetail/Promotion'
+import ShowProduct from '../../components/ShowProduct'
+import ButtonStorageBox from '../../components/ProductDetail/Button/ButtonStorage'
+import ProductParameters from '../../components/ProductDetail/ProductParameters'
+import { IoIosCheckmarkCircle } from 'react-icons/io'
+import { RxCaretRight } from 'react-icons/rx'
 
 const productInfo = {
-  name: "iPhone 13",
+  name: 'iPhone 13',
   colors: [
     {
       id: 0,
-      color: "midnightGreen",
+      color: 'midnightGreen',
       images: [
         {
-          link: "https://shopdunk.com/images/thumbs/0000568_alpine-green.webp",
+          link: 'https://shopdunk.com/images/thumbs/0000568_alpine-green.webp',
         },
         {
-          link: "https://shopdunk.com/images/thumbs/0000575_alpine-green_550.webp",
+          link: 'https://shopdunk.com/images/thumbs/0000575_alpine-green_550.webp',
         },
         {
-          link: "https://shopdunk.com/images/thumbs/0000569_alpine-green_550.webp",
+          link: 'https://shopdunk.com/images/thumbs/0000569_alpine-green_550.webp',
         },
         {
-          link: "https://shopdunk.com/images/thumbs/0000568_alpine-green.webp",
+          link: 'https://shopdunk.com/images/thumbs/0000568_alpine-green.webp',
         },
         {
-          link: "https://shopdunk.com/images/thumbs/0000568_alpine-green.webp",
+          link: 'https://shopdunk.com/images/thumbs/0000568_alpine-green.webp',
         },
         {
-          link: "https://shopdunk.com/images/thumbs/0000568_alpine-green.webp",
+          link: 'https://shopdunk.com/images/thumbs/0000568_alpine-green.webp',
         },
         {
-          link: "https://shopdunk.com/images/thumbs/0000568_alpine-green.webp",
+          link: 'https://shopdunk.com/images/thumbs/0000568_alpine-green.webp',
         },
       ],
     },
     {
       id: 1,
-      color: "blue",
+      color: 'blue',
       images: [
         {
-          link: "https://shopdunk.com/images/thumbs/0000626_blue_550.png",
+          link: 'https://shopdunk.com/images/thumbs/0000626_blue_550.png',
         },
         {
-          link: "https://shopdunk.com/images/thumbs/0000628_blue_550.webp",
+          link: 'https://shopdunk.com/images/thumbs/0000628_blue_550.webp',
         },
         {
-          link: "https://shopdunk.com/images/thumbs/0000629_blue_550.jpeg",
+          link: 'https://shopdunk.com/images/thumbs/0000629_blue_550.jpeg',
         },
         {
-          link: "https://shopdunk.com/images/thumbs/0000630_blue_550.webp",
+          link: 'https://shopdunk.com/images/thumbs/0000630_blue_550.webp',
         },
         {
-          link: "https://shopdunk.com/images/thumbs/0000631_blue_550.webp",
+          link: 'https://shopdunk.com/images/thumbs/0000631_blue_550.webp',
         },
         {
-          link: "https://shopdunk.com/images/thumbs/0000632_blue_550.webp",
+          link: 'https://shopdunk.com/images/thumbs/0000632_blue_550.webp',
         },
         {
-          link: "https://shopdunk.com/images/thumbs/0000629_blue_550.jpeg ",
+          link: 'https://shopdunk.com/images/thumbs/0000629_blue_550.jpeg ',
         },
       ],
     },
@@ -69,24 +69,24 @@ const productInfo = {
   storages: [
     {
       id: 0,
-      name: "128GB",
-      price: "13690000",
-      oldPrice: "24690000",
+      name: '128GB',
+      price: '13690000',
+      oldPrice: '24690000',
     },
     {
       id: 1,
-      name: "256GB",
-      price: "15690000",
-      oldPrice: "29690000",
+      name: '256GB',
+      price: '15690000',
+      oldPrice: '29690000',
     },
     {
       id: 2,
-      name: "512GB",
-      price: "19990000",
-      oldPrice: "34690000",
+      name: '512GB',
+      price: '19990000',
+      oldPrice: '34690000',
     },
   ],
-};
+}
 const ProductDetail = () => {
   return (
     <div className="bg-white">
@@ -162,7 +162,7 @@ const ProductDetail = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ProductDetail;
+export default ProductDetail

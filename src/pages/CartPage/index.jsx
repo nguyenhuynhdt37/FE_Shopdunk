@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { RxCaretRight } from "react-icons/rx";
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { RxCaretRight } from 'react-icons/rx'
 const CartPage = () => {
   return (
     <div className="cart-page bg-backgroudDefault">
@@ -14,7 +14,7 @@ const CartPage = () => {
         </ul>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CartPage;
+export default CartPage

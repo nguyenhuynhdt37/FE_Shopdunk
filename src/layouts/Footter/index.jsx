@@ -1,4 +1,4 @@
-import "./Footer.scss";
+import './Footer.scss'
 const Footer = () => {
   return (
     <div className="footer-box">
@@ -95,8 +95,8 @@ const Footer = () => {
         <div className="footer-lower pt-9 pb-4">
           <div className="footer-disclaimer grid grid-cols-8">
             <div className="footer-certificate  col-span-7">
-              © 2016 Công ty Cổ Phần HESMAN Việt Nam GPDKKD: 0107465657 do Sở KH
-              & ĐT TP. Hà Nội cấp ngày 08/06/2016.
+              © 2016 Công ty Cổ Phần HESMAN Việt Nam GPDKKD: 0107465657 do Sở
+              KH & ĐT TP. Hà Nội cấp ngày 08/06/2016.
               <br />
               Địa chỉ: Số 76 Thái Hà, phường Trung Liệt, quận Đống Đa, thành phố
               Hà Nội, Việt Nam
@@ -120,7 +120,7 @@ const Footer = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

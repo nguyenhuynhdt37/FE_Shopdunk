@@ -1,6 +1,6 @@
-import ListBoxProduct from "../../components/ListBoxProduct";
-import HomeNew from "../../components/HomeNews/HomeNew";
-import { SlideBanner, SlideGuest } from "../../components/Slide";
+import ListBoxProduct from '../../components/ListBoxProduct'
+import HomeNew from '../../components/HomeNews/HomeNew'
+import { SlideBanner, SlideGuest } from '../../components/Slide'
 
 const HomePage = () => {
   return (
@@ -28,7 +28,7 @@ const HomePage = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default HomePage;
+export default HomePage

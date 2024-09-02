@@ -1,7 +1,7 @@
-import React from "react";
-import { TbGiftCard } from "react-icons/tb";
-import { IoIosCheckmarkCircle } from "react-icons/io";
-import { FaCreditCard } from "react-icons/fa6";
+import React from 'react'
+import { TbGiftCard } from 'react-icons/tb'
+import { IoIosCheckmarkCircle } from 'react-icons/io'
+import { FaCreditCard } from 'react-icons/fa6'
 const Promotion = () => {
   return (
     <div className="product-promotion rounded-xl border-1 mt-7">
@@ -95,7 +95,7 @@ const Promotion = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Promotion;
+export default Promotion

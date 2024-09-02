@@ -1,9 +1,9 @@
 // utils/validation.js
 export const isPasswordValid = (password) => {
-  const minLength = 8;
-  const hasNumber = /\d/;
-  const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/;
-  const hasLetter = /[a-zA-Z]/;
+  const minLength = 8
+  const hasNumber = /\d/
+  const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/
+  const hasLetter = /[a-zA-Z]/
 
   if (
     password.length >= minLength &&
@@ -11,19 +11,19 @@ export const isPasswordValid = (password) => {
     hasSpecialChar.test(password) &&
     hasLetter.test(password)
   ) {
-    return true;
+    return true
   }
-  return false;
-};
+  return false
+}
 
 export const isEmailValid = (email) => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   if (!emailRegex.test(email)) {
-    return false;
+    return false
   }
-  return true;
-};
+  return true
+}
 export const isEmpty = (value) => {
-  if (value == null || value == undefined) return true;
-  return value.trim() === "";
-};
+  if (value == null || value == undefined) return true
+  return value.trim() === ''
+}

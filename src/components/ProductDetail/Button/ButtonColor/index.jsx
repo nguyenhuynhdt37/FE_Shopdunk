@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import ButtonColor from "./ButtonColor";
+import React, { useState } from 'react'
+import ButtonColor from './ButtonColor'
 
 const ButtonColorBox = ({ colors }) => {
-  const [active, setActive] = useState(colors[0].id);
+  const [active, setActive] = useState(colors[0].id)
   const handleSetActive = (id) => {
-    setActive(id);
-  };
+    setActive(id)
+  }
   return (
     <div className="flex">
       {colors.map((color) => (
@@ -17,7 +17,7 @@ const ButtonColorBox = ({ colors }) => {
         />
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default ButtonColorBox;
+export default ButtonColorBox

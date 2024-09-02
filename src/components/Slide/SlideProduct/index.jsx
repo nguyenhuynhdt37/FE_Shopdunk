@@ -1,18 +1,18 @@
-import { memo, useRef } from "react";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
-import Slider from "react-slick";
+import { memo, useRef } from 'react'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6'
+import Slider from 'react-slick'
 const SlideProduct = memo(({ images, onSelectImage }) => {
-  console.log(images);
-  const slider = useRef(null);
+  console.log(images)
+  const slider = useRef(null)
   let settings = {
     infinite: true,
     speed: 600,
     arrows: false,
     slidesToShow: 6,
     slidesToScroll: 5,
-  };
+  }
   return (
     <div className="box w-full relative">
       <button
@@ -46,7 +46,7 @@ const SlideProduct = memo(({ images, onSelectImage }) => {
           ))}
       </Slider>
     </div>
-  );
-});
+  )
+})
 
-export default SlideProduct;
+export default SlideProduct

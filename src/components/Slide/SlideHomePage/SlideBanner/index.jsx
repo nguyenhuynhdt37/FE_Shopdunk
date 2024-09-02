@@ -1,24 +1,24 @@
-import { memo, useRef } from "react";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
-import Slider from "react-slick";
+import { memo, useRef } from 'react'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6'
+import Slider from 'react-slick'
 const images = [
   {
-    link: "https://shopdunk.com/images/uploaded/banner/banner%202024/thang_6/banner%20iPad%20Air%205%20T6_PC.jpg",
+    link: 'https://shopdunk.com/images/uploaded/banner/banner%202024/thang_6/banner%20iPad%20Air%205%20T6_PC.jpg',
   },
   {
-    link: "https://shopdunk.com/images/uploaded/banner/banner%202024/thang_6/banner%20MacBook%20Air%20M1%20T6_PC.jpg",
+    link: 'https://shopdunk.com/images/uploaded/banner/banner%202024/thang_6/banner%20MacBook%20Air%20M1%20T6_PC.jpg',
   },
   {
-    link: "https://shopdunk.com/images/uploaded/banner/banner%202024/Thang_7/banner%20Mac%20t%E1%BB%95ng_PC%20(1).jpg",
+    link: 'https://shopdunk.com/images/uploaded/banner/banner%202024/Thang_7/banner%20Mac%20t%E1%BB%95ng_PC%20(1).jpg',
   },
   {
-    link: "https://shopdunk.com/images/uploaded/banner/banner%202024/Thang_7/banner%20iPhone%2015%20Pro%20Max%20T7_PC.jpg",
+    link: 'https://shopdunk.com/images/uploaded/banner/banner%202024/Thang_7/banner%20iPhone%2015%20Pro%20Max%20T7_PC.jpg',
   },
-];
+]
 const SlideBanner = () => {
-  const slider = useRef(null);
+  const slider = useRef(null)
   let settings = {
     dots: true,
     infinite: true,
@@ -28,7 +28,7 @@ const SlideBanner = () => {
     arrows: false,
     slidesToScroll: 1,
     autoplaySpeed: 5000,
-  };
+  }
   return (
     <div className="box w-full relative">
       <button
@@ -57,7 +57,7 @@ const SlideBanner = () => {
           ))}
       </Slider>
     </div>
-  );
-};
+  )
+}
 
-export default SlideBanner;
+export default SlideBanner

@@ -1,6 +1,6 @@
-import Footer from "./layouts/Footter";
-import Header from "./layouts/Header";
-import AppRouters from "./Routers";
+import Footer from './layouts/Footter'
+import Header from './layouts/Header'
+import AppRouters from './Routers'
 const App = () => {
   return (
     <div className="box-root w-100">
@@ -12,7 +12,7 @@ const App = () => {
         <Footer />
       </footer>
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App

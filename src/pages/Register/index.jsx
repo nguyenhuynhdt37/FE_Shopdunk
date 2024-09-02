@@ -1,88 +1,88 @@
-import { useRef, useState } from "react";
-import { RxCaretRight } from "react-icons/rx";
-import { Link, useNavigate } from "react-router-dom";
+import { useRef, useState } from 'react'
+import { RxCaretRight } from 'react-icons/rx'
+import { Link, useNavigate } from 'react-router-dom'
 import {
   isEmailValid,
   isEmpty,
   isPasswordValid,
-} from "../../../Utils/validation";
-import LoadingBar from "react-top-loading-bar";
-import { registerApi } from "../../api/userApi";
+} from '../../../Utils/validation'
+import LoadingBar from 'react-top-loading-bar'
+import { registerApi } from '../../api/userApi'
 const Register = () => {
-  const ref = useRef(null);
-  const navigate = useNavigate();
+  const ref = useRef(null)
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-    confirmPassword: "",
-    email: "",
-  });
+    username: '',
+    password: '',
+    confirmPassword: '',
+    email: '',
+  })
   const [error, setError] = useState({
-    username: "",
-    password: "",
-    confirmPassword: "",
-    email: "",
-  });
+    username: '',
+    password: '',
+    confirmPassword: '',
+    email: '',
+  })
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setError({ ...error, [name]: "" });
-    setFormData({ ...formData, [name]: value });
-  };
+    const { name, value } = e.target
+    setError({ ...error, [name]: '' })
+    setFormData({ ...formData, [name]: value })
+  }
 
   const checkinValidation = () => {
-    let newErrors = {};
+    let newErrors = {}
     if (isEmpty(formData.username)) {
-      newErrors.username = "Tên tài khoản không được bỏ trống";
+      newErrors.username = 'Tên tài khoản không được bỏ trống'
     }
     if (!isEmpty(formData.username) && formData.username < 8) {
-      newErrors.username = "Tài khoản phải đủ từ 8 ký tự đổ lên";
+      newErrors.username = 'Tài khoản phải đủ từ 8 ký tự đổ lên'
     }
     if (isEmpty(formData.password) || !isPasswordValid(formData.password)) {
       newErrors.password =
-        "Phải đáp ứng các quy tắc sau: phải có ít nhất 8 ký tự. Phải có ít nhất 8 ký tự trong đó có đặc biệt (ví dụ: #?!@$%^&*-)";
+        'Phải đáp ứng các quy tắc sau: phải có ít nhất 8 ký tự. Phải có ít nhất 8 ký tự trong đó có đặc biệt (ví dụ: #?!@$%^&*-)'
     }
 
     if (
       isEmpty(formData.confirmPassword) ||
       formData.password !== formData.confirmPassword
     ) {
-      newErrors.confirmPassword = "Mật khẩu không trùng khớp";
+      newErrors.confirmPassword = 'Mật khẩu không trùng khớp'
     }
 
     if (isEmpty(formData.email) || !isEmailValid(formData.email)) {
-      newErrors.email = "địa chỉ Email không hợp lệ";
+      newErrors.email = 'địa chỉ Email không hợp lệ'
     }
-    return newErrors;
-  };
+    return newErrors
+  }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError({});
-    const newErrors = checkinValidation();
+    e.preventDefault()
+    setError({})
+    const newErrors = checkinValidation()
     if (Object.keys(newErrors).length > 0) {
-      setError(newErrors);
-      return;
+      setError(newErrors)
+      return
     }
     const dataPost = {
       username: formData.username,
       PasswordHash: formData.password,
       email: formData.email,
-    };
-    ref.current.continuousStart(); // Bắt đầu thanh tiến trình
-    const { data: valueData, error: valueError } = await registerApi(dataPost);
+    }
+    ref.current.continuousStart() // Bắt đầu thanh tiến trình
+    const { data: valueData, error: valueError } = await registerApi(dataPost)
     if (valueError) {
-      const codeError = valueError.response.data;
+      const codeError = valueError.response.data
       setError({
         ...error,
         username: codeError,
-      });
+      })
     } else {
-      console.log(valueData);
-      navigate("/register/success");
+      console.log(valueData)
+      navigate('/register/success')
     }
-    ref.current.complete();
-  };
+    ref.current.complete()
+  }
   return (
     <div className="bg-white">
       <LoadingBar color="#0066df" ref={ref} />
@@ -120,6 +120,19 @@ const Register = () => {
               )}
             </div>
             <div className="box-input text-2xl mb-8">
+              <div className="title mb-2 font-medium">E-mail:</div>
+              <input
+                className="px-4 py-5 border rounded-xl w-full focus:outline-none focus:border-primary1"
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={(e) => handleInputChange(e)}
+              />
+              {error.email && (
+                <p className="error pt-3 text-red">{error.email}</p>
+              )}
+            </div>
+            <div className="box-input text-2xl mb-8">
               <div className="title mb-2 font-medium">Mật khẩu:</div>
               <input
                 className="px-4 py-5 border rounded-xl w-full focus:outline-none focus:border-primary1"
@@ -127,7 +140,7 @@ const Register = () => {
                 name="password"
                 value={formData.password}
                 onChange={(e) => handleInputChange(e)}
-              />{" "}
+              />{' '}
               {error.password && (
                 <p className="error pt-3 text-red">{error.password}</p>
               )}
@@ -149,20 +162,13 @@ const Register = () => {
                 <p className="error pt-3 text-red">{error.confirmPassword}</p>
               )}
             </div>
-
-            <div className="box-input text-2xl mb-8">
-              <div className="title mb-2 font-medium">E-mail:</div>
-              <input
-                className="px-4 py-5 border rounded-xl w-full focus:outline-none focus:border-primary1"
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={(e) => handleInputChange(e)}
-              />
-              {error.email && (
-                <p className="error pt-3 text-red">{error.email}</p>
-              )}
-            </div>
+            <p className="text-2xl text-zinc-600">
+              Bằng việc đăng ký tài khoản Tôi đồng ý với các{' '}
+              <a href="/" className="text-primary1">
+                điều khoản bảo mật & sử dụng thông tin cá nhân{' '}
+              </a>
+              của shopdunk
+            </p>
             <div
               className="btnsubmit mt-10 text-center py-6 bg-primary1 rounded-xl text-2xl text-white font-medium cursor-pointer "
               type="submit"
@@ -170,11 +176,17 @@ const Register = () => {
             >
               Đăng ký
             </div>
+            <div className="text-2xl  pt-7">
+              Bạn đã có tài khoản?{' '}
+              <Link to="/login" className="ms-2 text-primary1">
+                Đăng nhập ngay
+              </Link>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Register;
+export default Register

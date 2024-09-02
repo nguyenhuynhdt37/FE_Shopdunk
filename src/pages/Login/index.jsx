@@ -1,55 +1,67 @@
-import { useRef, useState } from "react";
-import { RxCaretRight } from "react-icons/rx";
-import { Link } from "react-router-dom";
-import LoadingBar from "react-top-loading-bar";
-import { login } from "../../api/userApi";
-import { isEmpty, isPasswordValid } from "../../../Utils/validation";
+import { useRef, useState } from 'react'
+import { RxCaretRight } from 'react-icons/rx'
+import { Link } from 'react-router-dom'
+import LoadingBar from 'react-top-loading-bar'
+import { isEmpty, isPasswordValid } from '../../../Utils/validation'
+import { useLoginMutation } from '../../redux/api/userApi'
+import { useDispatch } from 'react-redux'
+import { setInfoUser } from '../../redux/slice/UserSlice'
 
 const Login = () => {
-  const ref = useRef();
-  const [data, setData] = useState({});
-  const [dataError, setDataError] = useState({});
-  const [rememberMe, setRememberMe] = useState(false);
+  const dispatch = useDispatch()
+  const [login] = useLoginMutation()
+  const ref = useRef()
+  const [data, setData] = useState({})
+  const [dataError, setDataError] = useState({})
+  const [rememberMe, setRememberMe] = useState(false)
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setData({ ...data, [name]: value });
-    setDataError({ ...dataError, [name]: "", sever: [] });
-  };
+    const { name, value } = e.target
+    setData({ ...data, [name]: value })
+    setDataError({ ...dataError, [name]: '', sever: [] })
+  }
   const checkinValidation = () => {
-    let newError = {};
+    let newError = {}
     if (isEmpty(data.username))
-      newError.username = "Tài khoản không được bỏ trống";
+      newError.username = 'Tài khoản không được bỏ trống'
     if (!isEmpty(data.username) && data.username.length < 8) {
-      newError.username = "Tài khoản phải đủ 8 ký tự đổ lên";
+      newError.username = 'Tài khoản phải đủ 8 ký tự đổ lên'
     }
     if (!(!isEmpty(data.password) && isPasswordValid(data.password))) {
       newError.password =
-        "Mật khẩu phải bao gồm 8 chữ số bao gồm chữ hoa, chữ thường và ký tự đặc biệt";
+        'Mật khẩu phải bao gồm 8 chữ số bao gồm chữ hoa, chữ thường và ký tự đặc biệt'
     }
-    return newError;
-  };
+    return newError
+  }
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setDataError({});
-    const listError = checkinValidation();
+    e.preventDefault()
+    setDataError({})
+    const listError = checkinValidation()
     if (Object.keys(listError).length > 0) {
-      setDataError(listError);
-      return;
+      setDataError(listError)
+      return
     }
-    ref.current.continuousStart();
+    ref.current.continuousStart()
     const datapost = {
       UserName: data.username,
       PasswordHash: data.password,
-    };
-    const { data: loginData, error: isError } = await login(datapost);
-    if (isError) {
-      setDataError({
-        sever: isError.response.data,
-      });
     }
-    console.log(loginData);
-    ref.current.complete();
-  };
+    try {
+      const data = await login(datapost).unwrap() // Gọi API mutation
+      const { token, ...user } = data
+      dispatch(setInfoUser({ token, user }))
+      if (rememberMe) {
+        localStorage.setItem('token', token)
+      }
+    } catch (err) {
+      err.data
+        ? setDataError({ ...dataError, sever: err.data })
+        : setDataError({
+            ...dataError,
+            sever: ['Có lỗi xẩy ra', 'Vui lòng thử lại sau'],
+          })
+    }
+    ref.current.complete()
+  }
 
   return (
     <div className="bg-white">
@@ -80,7 +92,7 @@ const Login = () => {
                     <div className="error text-red text-2xl mb-30" key={index}>
                       {value}
                     </div>
-                  );
+                  )
                 })}
               </div>
             )}
@@ -92,7 +104,7 @@ const Login = () => {
                 className="px-4 py-5 border rounded-xl w-full focus:outline-none focus:border-primary1"
                 type="text"
                 name="username"
-                value={data.username ?? ""}
+                value={data.username ?? ''}
                 onChange={(e) => handleInputChange(e)}
               />
               {dataError.username && (
@@ -105,7 +117,7 @@ const Login = () => {
                 className="px-4 py-5 border rounded-xl w-full focus:outline-none focus:border-primary1"
                 type="password"
                 name="password"
-                value={data.password ?? ""}
+                value={data.password ?? ''}
                 onChange={(e) => handleInputChange(e)}
               />
               {dataError.password && (
@@ -145,7 +157,7 @@ const Login = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

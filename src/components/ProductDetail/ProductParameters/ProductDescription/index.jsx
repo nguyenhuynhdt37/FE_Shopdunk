@@ -3,7 +3,7 @@ const ProductDescription = ({ value }) => {
     <div className="product-description my-3">
       <img src={value.img} alt="" className="w-full" />
     </div>
-  );
-};
+  )
+}
 
-export default ProductDescription;
+export default ProductDescription

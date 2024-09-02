@@ -1,4 +1,4 @@
-import SlideBanner from "./SlideBanner";
-import SlideGuest from "./SlideGuest";
+import SlideBanner from './SlideBanner'
+import SlideGuest from './SlideGuest'
 
-export { SlideBanner, SlideGuest };
+export { SlideBanner, SlideGuest }

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import ButtonStorage from "./ButtonStorage";
+import React, { useState } from 'react'
+import ButtonStorage from './ButtonStorage'
 
 const ButtonStorageBox = ({ storages }) => {
-  const [active, setActive] = useState(0);
-  const handleSelect = (active) => setActive(active);
+  const [active, setActive] = useState(0)
+  const handleSelect = (active) => setActive(active)
   return (
     <>
       <div className="product-price flex mt-7 mb-9 items-center">
@@ -28,7 +28,7 @@ const ButtonStorageBox = ({ storages }) => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default ButtonStorageBox;
+export default ButtonStorageBox

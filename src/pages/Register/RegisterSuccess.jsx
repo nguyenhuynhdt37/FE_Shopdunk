@@ -1,7 +1,7 @@
-import React from "react";
-import { RxCaretRight } from "react-icons/rx";
-import { Link } from "react-router-dom";
-import { IoCheckmarkDoneCircle } from "react-icons/io5";
+import React from 'react'
+import { RxCaretRight } from 'react-icons/rx'
+import { Link } from 'react-router-dom'
+import { IoCheckmarkDoneCircle } from 'react-icons/io5'
 const RegisterSuccess = () => {
   return (
     <div className="bg-white">
@@ -33,7 +33,7 @@ const RegisterSuccess = () => {
         </Link>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default RegisterSuccess;
+export default RegisterSuccess

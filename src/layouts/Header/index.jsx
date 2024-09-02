@@ -1,12 +1,12 @@
-import { Link } from "react-router-dom";
-import { IoIosSearch } from "react-icons/io";
-import { LiaUser } from "react-icons/lia";
-import "./Header.scss";
+import { Link } from 'react-router-dom'
+import { IoIosSearch } from 'react-icons/io'
+import { LiaUser } from 'react-icons/lia'
+import './Header.scss'
 const Header = () => {
   return (
     <header
       className="header__box w-full bg-bgHeader sticky top-0 z-20"
-      style={{ height: "6.4rem" }}
+      style={{ height: '6.4rem' }}
     >
       <div className="container mx-auto my-0 h-full flex items-center justify-between">
         <div className="header__logo--box h-full flex items-center">
@@ -15,7 +15,7 @@ const Header = () => {
               src="https://shopdunk.com/images/thumbs/0027333_logo-shopdunk.png"
               alt="logo"
               className="header_logo object-cover"
-              style={{ width: "17.5rem" }}
+              style={{ width: '17.5rem' }}
             />
           </div>
         </div>
@@ -58,14 +58,14 @@ const Header = () => {
           <Link to="/register">
             <LiaUser className="mr-4" />
           </Link>
-          <div className="box-vn mr-4" style={{ width: "2rem" }}>
+          <div className="box-vn mr-4" style={{ width: '2rem' }}>
             <img
               className="langue-vi "
               src="https://shopdunk.com/images/flags/vn.png"
               alt=""
             />
           </div>
-          <div className="box-en" style={{ width: "2rem" }}>
+          <div className="box-en" style={{ width: '2rem' }}>
             <img
               src="https://shopdunk.com/images/flags/us.png"
               alt=""
@@ -75,7 +75,7 @@ const Header = () => {
         </div>
       </div>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

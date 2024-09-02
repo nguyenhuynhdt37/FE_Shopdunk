@@ -1,8 +1,8 @@
-import NewsItems from "./NewsItems";
+import NewsItems from './NewsItems'
 
 const HomeNew = () => {
   return (
-    <div className="update-news mb-60">
+    <div className="update-news pb-60">
       <div className="title text-center text-5xl mb-5 pt-9 font-semibold">
         News
       </div>
@@ -12,7 +12,7 @@ const HomeNew = () => {
         <NewsItems />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default HomeNew;
+export default HomeNew
