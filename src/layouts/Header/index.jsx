@@ -11,12 +11,15 @@ const Header = () => {
       <div className="container mx-auto my-0 h-full flex items-center justify-between">
         <div className="header__logo--box h-full flex items-center">
           <div className="boxx2">
-            <img
-              src="https://shopdunk.com/images/thumbs/0027333_logo-shopdunk.png"
-              alt="logo"
-              className="header_logo object-cover"
-              style={{ width: '17.5rem' }}
-            />
+            <Link to="/">
+              {' '}
+              <img
+                src="https://shopdunk.com/images/thumbs/0027333_logo-shopdunk.png"
+                alt="logo"
+                className="header_logo object-cover"
+                style={{ width: '17.5rem' }}
+              />
+            </Link>
           </div>
         </div>
         <ul className="header__router--box h-full flex flex-1 justify-around">

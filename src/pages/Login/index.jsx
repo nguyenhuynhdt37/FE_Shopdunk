@@ -79,6 +79,7 @@ const Login = () => {
         <div className="content grid grid-cols-12 gap-x-5 py-24 px-8">
           <div className="img col-span-7 pe-20">
             <img
+              className="sticky top-72"
               src="https://shopdunk.com/images/uploaded/banner/VNU_M492_08%201.jpeg"
               alt=""
               height="999"

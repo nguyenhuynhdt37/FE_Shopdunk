@@ -99,6 +99,7 @@ const Register = () => {
         <div className="content grid grid-cols-12 gap-x-5 py-24 px-8">
           <div className="img col-span-7 pe-20">
             <img
+              className=" sticky top-72"
               src="https://shopdunk.com/images/uploaded/banner/TND_M402_010%201.jpeg"
               alt=""
               height="999"
