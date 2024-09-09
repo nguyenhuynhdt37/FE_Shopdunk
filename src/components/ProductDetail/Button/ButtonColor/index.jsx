@@ -5,7 +5,7 @@ const ButtonColorBox = ({ data, typeCheck, onTypeCheck }) => {
     <div className="flex">
       {data.map((color, index) => (
         <ButtonColor
-          key={color}
+          key={index}
           index={index}
           isActive={typeCheck === index}
           color={color.colorCode}

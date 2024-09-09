@@ -2,7 +2,15 @@ import { Link } from 'react-router-dom'
 import { IoIosSearch } from 'react-icons/io'
 import { LiaUser } from 'react-icons/lia'
 import './Header.scss'
+import Tippy from '@tippyjs/react'
+import {
+  ModalAuthInfomaiton,
+  ModalAuthLogInOrRegister,
+} from '../../components/Header/ModalAuth'
+import { useSelector } from 'react-redux'
+
 const Header = () => {
+  const user = useSelector((state) => state.auth.user)
   return (
     <header
       className="header__box w-full bg-bgHeader sticky top-0 z-20"
@@ -52,15 +60,57 @@ const Header = () => {
           </li>
         </ul>
         <div className="header_features h-100 flex items-center cursor-pointer fs-5 text-white text-4xl">
-          <IoIosSearch className="mr-4" />
-          <div className="icon-cart mr-4">
-            <Link to="/cart">
-              <img src="/assets/icons/icon-cart.png" className="w-9" alt="" />
-            </Link>
-          </div>
-          <Link to="/register">
-            <LiaUser className="mr-4" />
-          </Link>
+          <Tippy content="Search" theme="light" arrow={true}>
+            <div>
+              <IoIosSearch className="mr-4" />
+            </div>
+          </Tippy>
+
+          <Tippy content="Cart" theme="light" arrow={true}>
+            <div className="icon-cart mr-4">
+              <Link to="/cart">
+                <img src="/assets/icons/icon-cart.png" className="w-9" alt="" />
+              </Link>
+            </div>
+          </Tippy>
+          {(user && (
+            <Tippy
+              content={<ModalAuthInfomaiton />}
+              placement="bottom"
+              theme="light"
+              offset={[35, 10]}
+              interactive={true}
+              arrow={false}
+            >
+              <div className="h-full rounded-full bg-white p-0.5 mr-4">
+                {user.avatar ? (
+                  <img
+                    className="rounded-full w-10 object-cover"
+                    src={user.avatar}
+                  />
+                ) : (
+                  <img
+                    className="rounded-full w-10 object-cover"
+                    src="https://anhdepfree.com/wp-content/uploads/2020/06/icon-facebook-buon-dep.pngs"
+                  />
+                )}
+              </div>
+            </Tippy>
+          )) ?? (
+            <Tippy
+              content={<ModalAuthLogInOrRegister />}
+              placement="bottom" // Đặt modal ở dưới phần tử
+              interactive={true} // Cho phép tương tác với modal
+              theme="light"
+              arrow={false}
+              offset={[60, 10]}
+              // trigger="click" // Modal sẽ xuất hiện khi click
+            >
+              <div>
+                <LiaUser className="mr-4" />
+              </div>
+            </Tippy>
+          )}
           <div className="box-vn mr-4" style={{ width: '2rem' }}>
             <img
               className="langue-vi "

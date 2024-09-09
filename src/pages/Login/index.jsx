@@ -46,11 +46,13 @@ const Login = () => {
       PasswordHash: data.password,
     }
     try {
-      const data = await login(datapost).unwrap() // Gọi API mutation
+      const data = await login(datapost).unwrap()
       const { token, ...user } = data
       dispatch(setInfoUser({ token, user }))
       if (rememberMe) {
         localStorage.setItem('token', token)
+      } else {
+        sessionStorage.setItem('token', token)
       }
     } catch (err) {
       err.data

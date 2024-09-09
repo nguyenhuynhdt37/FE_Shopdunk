@@ -1,4 +1,3 @@
-import { IoIosCheckmarkCircle } from 'react-icons/io'
 import ShowProduct from '../../ShowProduct'
 import { useState } from 'react'
 import { ButtonColorBox } from '../Button'

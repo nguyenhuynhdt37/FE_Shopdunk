@@ -1,6 +1,4 @@
 const DescriptionParameter = ({ data }) => {
-  console.log(data)
-
   return (
     <div className="row-table text-center px-20 mb-40">
       <table className="w-full">

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
@@ -7,12 +7,10 @@ const ProtectedRoute = ({ children }) => {
   const { token, user } = useSelector((state) => state.auth)
 
   useEffect(() => {
-    console.log(token, user)
-
     if (token && user) {
       return navigate('/')
     }
-  }, [])
+  }, [navigate, token, user])
 
   return children
 }

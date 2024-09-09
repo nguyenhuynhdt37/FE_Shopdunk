@@ -1,10 +1,14 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { SlideProduct } from '../Slide'
 const ShowProduct = ({ imageProduct }) => {
   const [image, setImage] = useState(imageProduct[0])
+  useEffect(() => {
+    setImage(imageProduct[0])
+  }, [imageProduct])
   const handleSelectImage = useCallback((image) => {
     setImage(image)
   }, [])
+
   return (
     <div className="box-img sticky top-28" style={{ height: '69.5rem' }}>
       <div

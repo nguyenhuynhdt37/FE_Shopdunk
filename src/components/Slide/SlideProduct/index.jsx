@@ -1,51 +1,70 @@
-import { memo, useRef } from 'react'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
-import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6'
-import Slider from 'react-slick'
-const SlideProduct = memo(({ images, onSelectImage }) => {
-  const slider = useRef(null)
-  let settings = {
-    infinite: true,
-    speed: 600,
-    arrows: false,
-    slidesToShow: 6,
-    slidesToScroll: 5,
+import { useRef } from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import { FaAngleRight, FaAngleLeft } from 'react-icons/fa6'
+const SlideProduct = ({ images, onSelectImage }) => {
+  const swiperRef = useRef(null)
+
+  console.log(Swiper)
+  const handleNext = () => {
+    if (swiperRef.current && swiperRef.current.swiper) {
+      swiperRef.current.swiper.slideNext()
+    }
+  }
+
+  const handlePrev = () => {
+    if (swiperRef.current && swiperRef.current.swiper) {
+      swiperRef.current.swiper.slidePrev()
+    }
   }
   return (
-    <div className="box w-full relative">
-      <button
-        className=" absolute flex items-center justify-center z-10 transform rounded-full  text-white -translate-y-1/2 top-1/2 text-3xl -left-3 w-10 h-10 bg-zinc-400 hover:bg-zinc-600"
-        onClick={() => slider?.current?.slickPrev()}
+    <div className="relative">
+      <Swiper
+        ref={swiperRef} // Gắn ref để truy cập vào swiper instance
+        spaceBetween={5} // Khoảng cách giữa các slide
+        slidesPerView={5} // Số slide hiển thị cùng lúc
+        scrollbar={{ draggable: true }} // Kích hoạt kéo thả thanh trượt
+        loop
       >
-        <FaAngleLeft />
-      </button>
-      <button
-        className=" absolute flex items-center justify-center z-10 transform rounded-full  text-white -translate-y-1/2 top-1/2 text-3xl -right-3 w-10 h-10 bg-zinc-400 hover:bg-zinc-600"
-        onClick={() => slider?.current?.slickNext()}
-      >
-        <FaAngleRight />
-      </button>
-      <Slider ref={slider} className="" {...settings}>
-        {images &&
-          images.map((image, index) => (
-            <div key={index} className=" rounded-xl p-1 border-1">
+        {images.map((image, index) => (
+          <SwiperSlide key={index}>
+            <div
+              className="rounded-xl py-1.5 px-1.5 border-1 h-36 max-w-48"
+              key={index}
+            >
               <div
-                className="box-img pr-3 cursor-pointer"
+                className="box-img pr-3 cursor-pointer h-full"
                 onClick={() => onSelectImage(image)}
               >
                 <img
-                  key={index}
                   src={image}
-                  className="object-cover rounded-md"
-                  alt={index}
+                  className="object-cover rounded-lg h-full"
+                  alt={`Image ${index}`}
                 />
               </div>
             </div>
-          ))}
-      </Slider>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+      {images && images.length > 5 && (
+        <>
+          <button
+            onClick={handlePrev}
+            className="w-10 h-10 text-3xl text-white translate-x-0 rounded-full bg-zinc-400 flex justify-center items-center absolute top-1/2 -translate-y-1/2 z-10 -left-4"
+          >
+            <FaAngleLeft />
+          </button>
+          <button
+            onClick={handleNext}
+            className="w-10 h-10 text-3xl text-white translate-x-0 rounded-full bg-zinc-400 flex justify-center items-center absolute top-1/2 -translate-y-1/2 z-10 -right-4"
+          >
+            <FaAngleRight />
+          </button>
+        </>
+      )}
     </div>
   )
-})
+}
 
 export default SlideProduct
