@@ -1,8 +1,7 @@
 import { useCallback, useState } from 'react'
 import { SlideProduct } from '../Slide'
 const ShowProduct = ({ imageProduct }) => {
-  const { images } = imageProduct
-  const [image, setImage] = useState(images[0].link)
+  const [image, setImage] = useState(imageProduct[0])
   const handleSelectImage = useCallback((image) => {
     setImage(image)
   }, [])
@@ -19,7 +18,7 @@ const ShowProduct = ({ imageProduct }) => {
         <img src={image} alt="" className="image_show" />
       </div>
       <div className="slider" style={{ width: '58.8rem' }}>
-        <SlideProduct onSelectImage={handleSelectImage} images={images} />
+        <SlideProduct onSelectImage={handleSelectImage} images={imageProduct} />
       </div>
     </div>
   )

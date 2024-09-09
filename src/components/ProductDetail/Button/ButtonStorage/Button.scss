@@ -2,4 +2,6 @@
 
 .active {
   border: 2px solid $color-primary; // Sử dụng biến màu trong quy tắc CSS
+  color: $color-primary;
+  font-weight: 500;
 }

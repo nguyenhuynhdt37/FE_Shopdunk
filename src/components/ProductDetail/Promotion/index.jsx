@@ -1,7 +1,7 @@
-import React from 'react'
 import { TbGiftCard } from 'react-icons/tb'
 import { IoIosCheckmarkCircle } from 'react-icons/io'
 import { FaCreditCard } from 'react-icons/fa6'
+import { memo } from 'react'
 const Promotion = () => {
   return (
     <div className="product-promotion rounded-xl border-1 mt-7">
@@ -9,10 +9,6 @@ const Promotion = () => {
         <div className="title flex items-center text-2xl font-bold">
           <FaCreditCard className="text-3xl mr-4" />
           Purchasing method
-        </div>
-        <div className="buy-straight mt-6 flex font-medium text-2xl text-zinc-600 items-center">
-          <input type="radio" className="mr-3" />
-          Buy straight
         </div>
       </div>
       <div className="line h-0.5 bg-zinc-100"></div>
@@ -98,4 +94,4 @@ const Promotion = () => {
   )
 }
 
-export default Promotion
+export default memo(Promotion)

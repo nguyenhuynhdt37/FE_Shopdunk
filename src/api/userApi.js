@@ -1,4 +1,4 @@
-import api from '.'
+import api from './'
 export const login = async (uselogin) => {
   try {
     const res = await api.post('users/login', uselogin)

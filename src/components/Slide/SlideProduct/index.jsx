@@ -4,7 +4,6 @@ import 'slick-carousel/slick/slick-theme.css'
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6'
 import Slider from 'react-slick'
 const SlideProduct = memo(({ images, onSelectImage }) => {
-  console.log(images)
   const slider = useRef(null)
   let settings = {
     infinite: true,
@@ -33,11 +32,11 @@ const SlideProduct = memo(({ images, onSelectImage }) => {
             <div key={index} className=" rounded-xl p-1 border-1">
               <div
                 className="box-img pr-3 cursor-pointer"
-                onClick={() => onSelectImage(image.link)}
+                onClick={() => onSelectImage(image)}
               >
                 <img
                   key={index}
-                  src={image.link}
+                  src={image}
                   className="object-cover rounded-md"
                   alt={index}
                 />

@@ -1,19 +1,15 @@
-import React, { useState } from 'react'
 import ButtonColor from './ButtonColor'
 
-const ButtonColorBox = ({ colors }) => {
-  const [active, setActive] = useState(colors[0].id)
-  const handleSetActive = (id) => {
-    setActive(id)
-  }
+const ButtonColorBox = ({ data, typeCheck, onTypeCheck }) => {
   return (
     <div className="flex">
-      {colors.map((color) => (
+      {data.map((color, index) => (
         <ButtonColor
           key={color}
-          onSetActive={handleSetActive}
-          isActive={active}
-          colorx={color}
+          index={index}
+          isActive={typeCheck === index}
+          color={color.colorCode}
+          onTypeCheck={onTypeCheck}
         />
       ))}
     </div>

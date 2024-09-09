@@ -1,15 +1,6 @@
-import axios from 'axios'
-import { useEffect, useState } from 'react'
-const DescriptionParameter = () => {
-  const [data, setData] = useState([])
+const DescriptionParameter = ({ data }) => {
+  console.log(data)
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await axios.get('/jj.json')
-      setData(res.data)
-    }
-    fetchData()
-  }, [])
   return (
     <div className="row-table text-center px-20 mb-40">
       <table className="w-full">
