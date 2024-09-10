@@ -1,6 +1,6 @@
-import ListBoxProduct from '../../components/ListBoxProduct'
-import HomeNew from '../../components/HomeNews/HomeNew'
+import HomeNew from '../../components/HomePage/HomeNews/HomeNew'
 import { SlideBanner, SlideGuest } from '../../components/Slide'
+import ListCategory from '../../components/HomePage/ListCategory'
 
 const HomePage = () => {
   return (
@@ -10,12 +10,7 @@ const HomePage = () => {
       </div>
       <div className="container pt-5 mx-auto">
         <SlideGuest />
-        <div className="list-box-products pt-5">
-          <ListBoxProduct />
-          <ListBoxProduct />
-          <ListBoxProduct />
-          <ListBoxProduct />
-        </div>
+        <ListCategory />
         <div className="banner-product mt-5 mb-5 pt-5">
           <img
             className="mt-5"

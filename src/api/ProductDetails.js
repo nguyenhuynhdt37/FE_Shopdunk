@@ -8,3 +8,15 @@ export const getDataProduct = async () => {
     return null
   }
 }
+
+export const getDataProductAllOnHomePage = async () => {
+  try {
+    const response = await api.get(
+      'products/category/product_all?pageNumber=1&pageSize=4'
+    )
+    return response.data // Trả về dữ liệu từ API
+  } catch (e) {
+    console.error('Error fetching product data:', e)
+    return null // Trả về null nếu có lỗi
+  }
+}
