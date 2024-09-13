@@ -12,7 +12,7 @@ const AppRouters = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/iphone" element={<ProductDetail />} />
+      <Route path="/product/:id" element={<ProductDetail />} />
       <Route path="/cart" element={<CartPage />} />
       <Route path="/register/success" element={<RegisterSuccess />} />
       <Route path="/logout" element={<Logout />} />

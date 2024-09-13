@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import ButtonStorage from './ButtonStorage'
 import { formatCurrency } from '../../../../../Utils/formart'
 const ButtonStorageBox = ({ storages }) => {
-  console.log('storage: ', storages)
   const [data, setData] = useState(storages[0])
   const [active, setActive] = useState(0)
   useEffect(() => {
@@ -10,7 +9,6 @@ const ButtonStorageBox = ({ storages }) => {
     setActive(0)
   }, [storages])
   const handleSelect = (storage, id) => {
-    console.log('Storw', storage)
     setActive(id)
 
     setData(storage)

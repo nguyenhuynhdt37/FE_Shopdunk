@@ -3,10 +3,19 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import { FaAngleRight, FaAngleLeft } from 'react-icons/fa6'
+import VideoThumbnail from '../../ProductDetail/VideoThumbnail'
+
+// Kiểm tra nếu đường link là video
+const isVideo = (url) => {
+  return (
+    url.match(
+      /\.(mp4|webm|ogg|mov|avi|flv|mkv|wmv|m4v|3gp|mpeg|mpg|vob|f4v|ts|m2ts)$/i
+    ) != null
+  )
+}
 const SlideProduct = ({ images, onSelectImage }) => {
   const swiperRef = useRef(null)
 
-  console.log(Swiper)
   const handleNext = () => {
     if (swiperRef.current && swiperRef.current.swiper) {
       swiperRef.current.swiper.slideNext()
@@ -37,11 +46,15 @@ const SlideProduct = ({ images, onSelectImage }) => {
                 className="box-img pr-3 cursor-pointer h-full"
                 onClick={() => onSelectImage(image)}
               >
-                <img
-                  src={image}
-                  className="object-cover rounded-lg h-full"
-                  alt={`Image ${index}`}
-                />
+                {isVideo(image) ? (
+                  <VideoThumbnail image={image} />
+                ) : (
+                  <img
+                    src={image}
+                    className="object-cover rounded-lg h-full"
+                    alt={`Image ${index}`}
+                  />
+                )}
               </div>
             </div>
           </SwiperSlide>

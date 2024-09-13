@@ -1,7 +1,8 @@
 import api from '.'
-export const getDataProduct = async () => {
+export const getDataProduct = async ({ queryKey }) => {
+  const [_key, id] = queryKey
   try {
-    const data = await api.get('products/66dc440bfc904b00fe3814f4')
+    const data = await api.get(`products/${id}`)
     return data.data
   } catch (e) {
     console.log(e)
@@ -14,9 +15,9 @@ export const getDataProductAllOnHomePage = async () => {
     const response = await api.get(
       'products/category/product_all?pageNumber=1&pageSize=4'
     )
-    return response.data // Trả về dữ liệu từ API
+    return response.data
   } catch (e) {
     console.error('Error fetching product data:', e)
-    return null // Trả về null nếu có lỗi
+    return null
   }
 }

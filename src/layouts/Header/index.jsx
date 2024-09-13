@@ -20,7 +20,6 @@ const Header = () => {
         <div className="header__logo--box h-full flex items-center">
           <div className="boxx2">
             <Link to="/">
-              {' '}
               <img
                 src="https://shopdunk.com/images/thumbs/0027333_logo-shopdunk.png"
                 alt="logo"
@@ -31,33 +30,51 @@ const Header = () => {
           </div>
         </div>
         <ul className="header__router--box h-full flex flex-1 justify-around">
-          <li className=" hover:bg-bgHeaderHover text-textHeader px-6 py-6 text-2xl h-full flex items-center ">
-            <a href="/">iPhone</a>
-          </li>
-          <li className=" hover:bg-bgHeaderHover text-textHeader px-6 py-6 text-2xl h-full flex items-center">
-            <a href="/">iPad</a>
-          </li>
-          <li className=" hover:bg-bgHeaderHover text-textHeader px-6 py-6 text-2xl h-full flex items-center">
-            <a href="/">Mac</a>
-          </li>
-          <li className=" hover:bg-bgHeaderHover text-textHeader px-6 py-6 text-2xl h-full flex items-center">
-            <a href="/">Watch</a>
-          </li>
-          <li className=" hover:bg-bgHeaderHover text-textHeader px-6 py-6 text-2xl h-full flex items-center">
-            <a href="/">Old Product</a>
-          </li>
-          <li className=" hover:bg-bgHeaderHover text-textHeader px-6 py-6 text-2xl h-full flex items-center">
-            <a href="/">Accessory</a>
-          </li>
-          <li className=" hover:bg-bgHeaderHover text-textHeader px-6 py-6 text-2xl h-full flex items-center">
-            <a href="/">Service</a>
-          </li>
-          <li className=" hover:bg-bgHeaderHover text-textHeader px-6 py-6 text-2xl h-full flex items-center">
-            <a href="/">News</a>
-          </li>
-          <li className=" hover:bg-bgHeaderHover text-textHeader px-6 py-6 text-2xl h-full flex items-center">
-            <a href="/">Discount</a>
-          </li>
+          <Link to="/iphone">
+            <li className=" hover:bg-bgHeaderHover text-textHeader px-6 py-6 text-2xl h-full flex items-center ">
+              iPhone
+            </li>
+          </Link>
+          <Link>
+            <li className=" hover:bg-bgHeaderHover text-textHeader px-6 py-6 text-2xl h-full flex items-center">
+              iPad
+            </li>
+          </Link>
+          <Link>
+            <li className=" hover:bg-bgHeaderHover text-textHeader px-6 py-6 text-2xl h-full flex items-center">
+              Mac
+            </li>
+          </Link>
+          <Link>
+            <li className=" hover:bg-bgHeaderHover text-textHeader px-6 py-6 text-2xl h-full flex items-center">
+              Watch
+            </li>
+          </Link>
+          <Link>
+            <li className=" hover:bg-bgHeaderHover text-textHeader px-6 py-6 text-2xl h-full flex items-center">
+              Old Product
+            </li>
+          </Link>
+          <Link>
+            <li className=" hover:bg-bgHeaderHover text-textHeader px-6 py-6 text-2xl h-full flex items-center">
+              Accessory
+            </li>
+          </Link>
+          <Link>
+            <li className=" hover:bg-bgHeaderHover text-textHeader px-6 py-6 text-2xl h-full flex items-center">
+              Service
+            </li>
+          </Link>
+          <Link>
+            <li className=" hover:bg-bgHeaderHover text-textHeader px-6 py-6 text-2xl h-full flex items-center">
+              News
+            </li>
+          </Link>
+          <Link>
+            <li className=" hover:bg-bgHeaderHover text-textHeader px-6 py-6 text-2xl h-full flex items-center">
+              Discount
+            </li>
+          </Link>
         </ul>
         <div className="header_features h-100 flex items-center cursor-pointer fs-5 text-white text-4xl">
           <Tippy content="Search" theme="light" arrow={true}>
@@ -73,7 +90,9 @@ const Header = () => {
               </Link>
             </div>
           </Tippy>
-          {(user && (
+          {user &&
+          Object.keys(user).length > 0 &&
+          Object.values(user).length > 0 ? (
             <Tippy
               content={<ModalAuthInfomaiton />}
               placement="bottom"
@@ -96,7 +115,7 @@ const Header = () => {
                 )}
               </div>
             </Tippy>
-          )) ?? (
+          ) : (
             <Tippy
               content={<ModalAuthLogInOrRegister />}
               placement="bottom" // Đặt modal ở dưới phần tử

@@ -2,20 +2,21 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import ItemProduct from '../ItemProduct'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const ListBoxProduct = () => {
+const ListBoxProduct = ({ data }) => {
   return (
     <div className="mt-4">
       <div
         style={{ fontSize: '3rem' }}
         className="title pt-7 font-bold text-center"
       >
-        iPhone
+        {data.categoryName}
       </div>
       <div className="grid grid-cols-4 gap-7 mt-5">
-        <ItemProduct />
-        <ItemProduct />
-        <ItemProduct />
-        <ItemProduct />
+        {data &&
+          data.items &&
+          data.items.map((product) => (
+            <ItemProduct data={product} key={product.id} />
+          ))}
       </div>
       <div className="more mt-10 justify-center flex">
         <button
