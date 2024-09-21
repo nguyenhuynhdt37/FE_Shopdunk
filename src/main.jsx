@@ -1,7 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-import './index.scss'
+import './input.css'
+import './markdown.scss'
+import 'github-markdown-css/github-markdown.css'
 import GlobalStyle from './components/GlobalStyle'
 import 'tippy.js/dist/tippy.css'
 import 'tippy.js/themes/light.css' // Import CSS của theme light

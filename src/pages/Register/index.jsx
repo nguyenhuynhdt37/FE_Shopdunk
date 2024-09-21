@@ -78,7 +78,6 @@ const Register = () => {
         username: codeError,
       })
     } else {
-      console.log(valueData)
       navigate('/register/success')
     }
     ref.current.complete()

@@ -1,0 +1,16 @@
+// Trong tệp CSS của bạn, hoặc trong phần `<style>` trong JSX:
+.scrollbar-custom::-webkit-scrollbar {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background-color: #d2d2d7;
+  border-radius: 1.2rem;
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background-color: #ebebeb;
+  border-radius: 1.2rem;
+  border: 0.1rem solid #dcdbdb;
+}

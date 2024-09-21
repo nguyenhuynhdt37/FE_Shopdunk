@@ -1,17 +1,15 @@
 import './ProductDetail.scss'
 import ProductParameters from '../../components/ProductDetail/ProductParameters'
-import { getDataProduct } from '../../api/ProductDetails'
+import { getDataProduct, getNavProduct } from '../../api/ProductDetails'
 import ErrorPage from '../ErrorPage'
 import ProductEssential from '../../components/ProductDetail/ProductEssential'
 import PageNavigation from '../../components/PageNavigation'
 import { useParams } from 'react-router-dom'
 import { useQuery } from 'react-query'
-import { useEffect, useState } from 'react'
 
 const ProductDetail = () => {
   const { id } = useParams()
-  const [navigation, setNavigation] = useState([])
-  const { data, isLoading, error } = useQuery(
+  const { data: productData, error: errorProduct } = useQuery(
     ['products', id],
     getDataProduct,
     {
@@ -20,38 +18,27 @@ const ProductDetail = () => {
     }
   )
 
-  useEffect(() => {
-    if (data && data.categoryName && data.categoryId) {
-      const nav = [
-        {
-          name: data.categoryName,
-          id: data.categoryId,
-        },
-        {
-          name: data.name,
-          id: id,
-        },
-      ]
-      setNavigation(nav)
-    }
-  }, [data, id])
+  const { data: dataNav } = useQuery(['nav', id], getNavProduct, {
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: true,
+  })
+  console.log('>> product data', productData)
 
   return (
-    <div className="bg-white">
-      {!error && !isLoading && data.variants ? (
+    <div className="bg-white font-custom">
+      {productData && productData.variants && (
         <div className="container mx-auto text-xl">
           <div className="product-deails container p-0">
-            <PageNavigation data={navigation} />
-            <ProductEssential data={data.variants} name={data.name} />
-            <ProductParameters
-              describe={data.describe}
-              details={data.productDetails}
+            <PageNavigation data={dataNav} />
+            <ProductEssential
+              data={productData && productData.variants}
+              name={productData && productData.name}
             />
+            <ProductParameters id={id} />
           </div>
         </div>
-      ) : (
-        <ErrorPage />
       )}
+      {errorProduct && <ErrorPage />}
     </div>
   )
 }

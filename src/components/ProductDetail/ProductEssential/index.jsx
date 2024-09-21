@@ -4,18 +4,23 @@ import { ButtonColorBox } from '../Button'
 import ButtonStorageBox from '../Button/ButtonStorage'
 import Promotion from '../Promotion'
 import Policy from '../Policy'
-const ProductEssential = ({ data, name }) => {
+import { FaStar } from 'react-icons/fa6'
+const ProductEssential = ({ data, name, isNewProduct }) => {
   const [typeCheck, setTypeCheck] = useState(0)
+  console.log('data variant', data)
 
   return (
-    <div className=" relative grid grid-cols-2 product-box">
-      <ShowProduct imageProduct={data[typeCheck].images} />
+    <div className=" relative grid grid-cols-2 text-[1.3rem] text-[#515154] product-box">
+      <ShowProduct medias={data[typeCheck].medias} />
+
       <div className="ps-14  pb-16">
-        <h4 className="product_name text-4xl font-bold mb-3">{name}</h4>
-        <div className="h-0.5 bg-slate-200"></div>
-        <ButtonStorageBox storages={data[typeCheck].memoryOptions} />
+        <ButtonStorageBox
+          name={name}
+          storages={data[typeCheck].memoryOptions}
+        />
+
         <div className="product_color mt-8">
-          <div className="title mb-6">Color</div>
+          <div className="title mb-6">Màu sắc: {data[typeCheck].color}</div>
           <ButtonColorBox
             data={data}
             typeCheck={typeCheck}

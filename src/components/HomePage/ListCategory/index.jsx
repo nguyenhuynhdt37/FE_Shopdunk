@@ -13,12 +13,17 @@ const ListCategory = () => {
   )
 
   return (
-    <div className="list-box-products pt-5">
+    <div className="list-box-products pt-5 ">
       {data &&
         data.length > 0 &&
-        data.map((product) => (
-          <ListBoxProduct data={product} key={product.categoryId} />
-        ))}
+        data.map(
+          (category) =>
+            category &&
+            category.productSeries[0] &&
+            category.productSeries[0].products.length > 0 && (
+              <ListBoxProduct data={category} key={category.id} />
+            )
+        )}
     </div>
   )
 }

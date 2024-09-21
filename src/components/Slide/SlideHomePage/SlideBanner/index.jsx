@@ -5,6 +5,12 @@ import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6'
 import Slider from 'react-slick'
 const images = [
   {
+    link: 'https://shopdunk.com/images/uploaded/iPhone%2016/banner%20iphone%2016%20pro-KCTA_Danh%20m%E1%BB%A5c.png',
+  },
+  {
+    link: 'https://shopdunk.com/images/uploaded/banner/banner 2024/Thang_9/thang9_2/11dm.png',
+  },
+  {
     link: 'https://shopdunk.com/images/uploaded/banner/banner%202024/thang_6/banner%20iPad%20Air%205%20T6_PC.jpg',
   },
   {

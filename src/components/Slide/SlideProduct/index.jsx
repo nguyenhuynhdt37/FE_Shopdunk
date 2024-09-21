@@ -3,17 +3,8 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import { FaAngleRight, FaAngleLeft } from 'react-icons/fa6'
-import VideoThumbnail from '../../ProductDetail/VideoThumbnail'
 
-// Kiểm tra nếu đường link là video
-const isVideo = (url) => {
-  return (
-    url.match(
-      /\.(mp4|webm|ogg|mov|avi|flv|mkv|wmv|m4v|3gp|mpeg|mpg|vob|f4v|ts|m2ts)$/i
-    ) != null
-  )
-}
-const SlideProduct = ({ images, onSelectImage }) => {
+const SlideProduct = ({ medias, onSelectImage }) => {
   const swiperRef = useRef(null)
 
   const handleNext = () => {
@@ -36,31 +27,52 @@ const SlideProduct = ({ images, onSelectImage }) => {
         scrollbar={{ draggable: true }} // Kích hoạt kéo thả thanh trượt
         loop
       >
-        {images.map((image, index) => (
-          <SwiperSlide key={index}>
-            <div
-              className="rounded-xl py-1.5 px-1.5 border-1 h-36 max-w-48"
-              key={index}
-            >
-              <div
-                className="box-img pr-3 cursor-pointer h-full"
-                onClick={() => onSelectImage(image)}
-              >
-                {isVideo(image) ? (
-                  <VideoThumbnail image={image} />
-                ) : (
-                  <img
-                    src={image}
-                    className="object-cover rounded-lg h-full"
-                    alt={`Image ${index}`}
-                  />
-                )}
-              </div>
-            </div>
-          </SwiperSlide>
-        ))}
+        {medias &&
+          medias.map((media) => {
+            if (media && media.video)
+              return (
+                <SwiperSlide key={media.id}>
+                  <div className="rounded-xl py-1.5 px-1.5 border-1 h-36 max-w-48">
+                    <div
+                      className="box-img pr-3 cursor-pointer h-full  relative"
+                      onClick={() => onSelectImage(media)}
+                    >
+                      <img
+                        src={media.video.urlImage}
+                        className="object-cover rounded-lg h-full"
+                        alt={`Image ${media.title}`}
+                      />
+                      <img
+                        src="https://shopdunk.com/images/uploaded-source/icon/play-button.png"
+                        className="object-cover rounded-lg h-full absolute top-1/2  -translate-y-1/2"
+                        alt={`Image ${media.title}`}
+                      />
+                    </div>
+                  </div>
+                </SwiperSlide>
+              )
+            if (media && media.image)
+              return (
+                <SwiperSlide key={media.id}>
+                  <div className="rounded-xl py-1.5 px-1.5 border-1 h-36 max-w-48">
+                    <div
+                      className="box-img pr-3 cursor-pointer h-full overflow-hidden"
+                      onClick={() => onSelectImage(media)}
+                    >
+                      <img
+                        src={media.image.url}
+                        className="object-cover rounded-lg h-full scale-125"
+                        alt={`Image ${media.title}`}
+                      />
+                    </div>
+                  </div>
+                </SwiperSlide>
+              )
+            return null
+          })}
       </Swiper>
-      {images && images.length > 5 && (
+
+      {medias && medias.length > 5 && (
         <>
           <button
             onClick={handlePrev}

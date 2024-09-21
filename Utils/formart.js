@@ -4,3 +4,10 @@ export const formatCurrency = (amount) => {
     currency: 'VND',
   }).format(amount)
 }
+export const getVideoIdFromUrl = (url) => {
+  if (url == null) return null
+  const match = url.match(
+    /(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([^&]+)/
+  )
+  return match ? match[1] : null
+}

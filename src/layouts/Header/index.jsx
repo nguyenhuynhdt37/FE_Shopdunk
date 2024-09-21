@@ -30,7 +30,7 @@ const Header = () => {
           </div>
         </div>
         <ul className="header__router--box h-full flex flex-1 justify-around">
-          <Link to="/iphone">
+          <Link to="/category/1">
             <li className=" hover:bg-bgHeaderHover text-textHeader px-6 py-6 text-2xl h-full flex items-center ">
               iPhone
             </li>

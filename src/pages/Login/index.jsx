@@ -1,69 +1,102 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { RxCaretRight } from 'react-icons/rx'
 import { Link } from 'react-router-dom'
 import LoadingBar from 'react-top-loading-bar'
 import { isEmpty, isPasswordValid } from '../../../Utils/validation'
-import { useLoginMutation } from '../../redux/api/userApi'
+import {
+  useGetUserByTokenQuery,
+  useLoginMutation,
+} from '../../redux/api/userApi'
 import { useDispatch } from 'react-redux'
-import { setInfoUser } from '../../redux/slice/UserSlice'
+import {
+  setTokenAndRefestToken,
+  setUserInfo,
+} from '../../redux/slice/UserSlice'
 
 const Login = () => {
   const dispatch = useDispatch()
-  const [login] = useLoginMutation()
   const ref = useRef()
-  const [data, setData] = useState({})
+  const [data, setData] = useState({ username: '', password: '' })
   const [dataError, setDataError] = useState({})
-  const [rememberMe, setRememberMe] = useState(false)
+  const [rememberMe, setRememberMe] = useState(true)
+  const [login] = useLoginMutation()
+  const [token, setToken] = useState(null)
+
+  const { refetch } = useGetUserByTokenQuery(null, { skip: !token })
+
   const handleInputChange = (e) => {
     const { name, value } = e.target
     setData({ ...data, [name]: value })
     setDataError({ ...dataError, [name]: '', sever: [] })
   }
+
   const checkinValidation = () => {
     let newError = {}
     if (isEmpty(data.username))
       newError.username = 'Tài khoản không được bỏ trống'
-    if (!isEmpty(data.username) && data.username.length < 8) {
-      newError.username = 'Tài khoản phải đủ 8 ký tự đổ lên'
-    }
     if (!(!isEmpty(data.password) && isPasswordValid(data.password))) {
       newError.password =
         'Mật khẩu phải bao gồm 8 chữ số bao gồm chữ hoa, chữ thường và ký tự đặc biệt'
     }
     return newError
   }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     setDataError({})
+
     const listError = checkinValidation()
     if (Object.keys(listError).length > 0) {
       setDataError(listError)
       return
     }
+
     ref.current.continuousStart()
+
     const datapost = {
-      UserName: data.username,
-      PasswordHash: data.password,
+      userName: data.username,
+      password: data.password,
     }
+
     try {
-      const data = await login(datapost).unwrap()
-      const { token, ...user } = data
-      dispatch(setInfoUser({ token, user }))
+      const response = await login(datapost).unwrap()
+      dispatch(setTokenAndRefestToken({ data: response }))
+      console.log(response)
+
+      setToken(response.token)
+
       if (rememberMe) {
-        localStorage.setItem('token', token)
-      } else {
-        sessionStorage.setItem('token', token)
+        localStorage.setItem('refreshToken', response.refreshToken)
+        localStorage.setItem('token', response.token)
       }
     } catch (err) {
-      err.data
-        ? setDataError({ ...dataError, sever: err.data })
-        : setDataError({
-            ...dataError,
-            sever: ['Có lỗi xẩy ra', 'Vui lòng thử lại sau'],
-          })
+      console.error('Error during login or fetching user data:', err)
+      if (err.data) {
+        setDataError({ ...dataError, sever: err.data })
+      } else {
+        setDataError({
+          ...dataError,
+          sever: ['Có lỗi xảy ra', 'Vui lòng thử lại sau'],
+        })
+      }
+    } finally {
+      ref.current.complete()
     }
-    ref.current.complete()
   }
+
+  useEffect(() => {
+    if (token && refetch) {
+      const fetchUserData = async () => {
+        try {
+          const user = await refetch().unwrap()
+          dispatch(setUserInfo({ user }))
+        } catch (err) {
+          console.error('Error fetching user data:', err)
+        }
+      }
+      fetchUserData()
+    }
+  }, [token, refetch, dispatch])
 
   return (
     <div className="bg-white">
@@ -90,13 +123,11 @@ const Login = () => {
           <div className="col-span-5">
             {dataError.sever && (
               <div className="error pb-10">
-                {dataError.sever.map((value, index) => {
-                  return (
-                    <div className="error text-red text-2xl mb-30" key={index}>
-                      {value}
-                    </div>
-                  )
-                })}
+                {dataError.sever.map((value, index) => (
+                  <div className="error text-red text-2xl mb-30" key={index}>
+                    {value}
+                  </div>
+                ))}
               </div>
             )}
 
@@ -107,8 +138,8 @@ const Login = () => {
                 className="px-4 py-5 border rounded-xl w-full focus:outline-none focus:border-primary1"
                 type="text"
                 name="username"
-                value={data.username ?? ''}
-                onChange={(e) => handleInputChange(e)}
+                value={data.username}
+                onChange={handleInputChange}
               />
               {dataError.username && (
                 <p className="error pt-3 text-red">{dataError.username}</p>
@@ -120,8 +151,8 @@ const Login = () => {
                 className="px-4 py-5 border rounded-xl w-full focus:outline-none focus:border-primary1"
                 type="password"
                 name="password"
-                value={data.password ?? ''}
-                onChange={(e) => handleInputChange(e)}
+                value={data.password}
+                onChange={handleInputChange}
               />
               {dataError.password && (
                 <p className="error pt-3 text-red">{dataError.password}</p>
@@ -144,9 +175,8 @@ const Login = () => {
               </div>
             </div>
             <div
-              className="btnsubmit mt-10 text-center py-6 bg-primary1 rounded-xl text-2xl text-white font-medium cursor-pointer "
-              type="submit"
-              onClick={(e) => handleSubmit(e)}
+              className="btnsubmit mt-10 text-center py-6 bg-primary1 rounded-xl text-2xl text-white font-medium cursor-pointer"
+              onClick={handleSubmit}
             >
               Đăng nhập
             </div>

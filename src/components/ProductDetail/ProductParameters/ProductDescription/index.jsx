@@ -1,8 +1,28 @@
-const ProductDescription = ({ value }) => {
+import { useQuery } from 'react-query'
+import { getProductDescription } from '../../../../api/ProductDetails'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+const ProductDescription = ({ id }) => {
+  const { data } = useQuery(
+    ['get_product_by_cateogry', id],
+    getProductDescription,
+    {
+      refetchOnWindowFocus: false,
+    }
+  )
+
   return (
-    <div className="product-description my-3">
-      <img src={value} alt="" className="w-full" />
-    </div>
+    <>
+      {data && data.content && (
+        <div className="product-description my-3">
+          <div className="markdown-body text-justify relative rounded-xl mt-10 bg-white">
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              {data.content}
+            </ReactMarkdown>
+          </div>
+        </div>
+      )}
+    </>
   )
 }
 

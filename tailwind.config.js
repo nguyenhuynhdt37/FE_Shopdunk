@@ -3,6 +3,9 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
+      fontFamily: {
+        custom: ['Arial'],
+      },
       boxShadow: {
         item: '2px 1px 28px 0px rgb(0 0 0 / 12%)',
         item_non_hover: '0px 1px 8px rgba(0, 0, 0, 0.04)',

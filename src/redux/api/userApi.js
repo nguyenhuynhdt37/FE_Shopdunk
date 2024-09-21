@@ -1,19 +1,15 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+
 const userApi = createApi({
   reducerPath: 'userApi',
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_API_URL,
     prepareHeaders: (headers, { getState }) => {
-      let token = getState().auth.token
-      console.log('>>', token)
-
-      if (!token) {
-        token = localStorage.getItem('token') || sessionStorage.getItem('token')
-      }
+      const state = getState()
+      const token = state.auth.token || localStorage.getItem('token')
       if (token) {
         headers.set('Authorization', `Bearer ${token}`)
       }
-
       return headers
     },
   }),
@@ -31,8 +27,26 @@ const userApi = createApi({
         method: 'get',
       }),
     }),
+    refreshToken: builder.mutation({
+      query: (data) => ({
+        url: 'users/refresh-token',
+        method: 'post',
+        body: data,
+      }),
+      transformResponse: (response) => {
+        console.log(response)
+        if (response) {
+          localStorage.setItem('refreshToken', response.refreshToken)
+          localStorage.setItem('token', response.token)
+        }
+      },
+    }),
   }),
 })
 
-export const { useLoginMutation, useGetUserByTokenQuery } = userApi
+export const {
+  useLoginMutation,
+  useGetUserByTokenQuery,
+  useRefreshTokenMutation,
+} = userApi
 export default userApi

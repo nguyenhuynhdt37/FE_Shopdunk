@@ -1,4 +1,3 @@
-import React from 'react'
 import './Button.scss'
 
 const ButtonStorage = ({ storage, isActive, onSelect, id }) => {
