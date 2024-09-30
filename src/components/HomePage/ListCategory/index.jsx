@@ -1,9 +1,9 @@
 import ListBoxProduct from '../../ListBoxProduct'
 import { getDataProductAllOnHomePage } from '../../../api/ProductDetails'
 import { useQuery } from 'react-query'
-
+import Loading from '../../Loading'
 const ListCategory = () => {
-  const { data, isLoading, error } = useQuery(
+  const { data, isLoading } = useQuery(
     'dataCategory',
     getDataProductAllOnHomePage,
     {
@@ -24,6 +24,7 @@ const ListCategory = () => {
               <ListBoxProduct data={category} key={category.id} />
             )
         )}
+      {isLoading && <Loading />}
     </div>
   )
 }

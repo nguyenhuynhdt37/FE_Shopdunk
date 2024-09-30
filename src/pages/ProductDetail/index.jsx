@@ -6,24 +6,35 @@ import ProductEssential from '../../components/ProductDetail/ProductEssential'
 import PageNavigation from '../../components/PageNavigation'
 import { useParams } from 'react-router-dom'
 import { useQuery } from 'react-query'
+import Loading from '../../components/Loading'
+import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { addToProductId } from '../../redux/slice/ProductSlice'
 
 const ProductDetail = () => {
   const { id } = useParams()
-  const { data: productData, error: errorProduct } = useQuery(
-    ['products', id],
-    getDataProduct,
-    {
-      refetchOnWindowFocus: false,
-      refetchOnReconnect: true,
-    }
-  )
+  const dispatch = useDispatch()
+  const {
+    data: productData,
+    error: errorProduct,
+    isLoading,
+  } = useQuery(['products', id], getDataProduct, {
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: true,
+  })
 
   const { data: dataNav } = useQuery(['nav', id], getNavProduct, {
     refetchOnWindowFocus: false,
     refetchOnReconnect: true,
   })
-  console.log('>> product data', productData)
+  useEffect(() => {
+    if (productData) {
+      console.log('hukafkahs')
 
+      dispatch(addToProductId(id))
+    }
+  }, [dispatch, id, productData])
+  console.log('>> product data', productData)
   return (
     <div className="bg-white font-custom">
       {productData && productData.variants && (
@@ -39,6 +50,7 @@ const ProductDetail = () => {
         </div>
       )}
       {errorProduct && <ErrorPage />}
+      {isLoading && <Loading />}
     </div>
   )
 }

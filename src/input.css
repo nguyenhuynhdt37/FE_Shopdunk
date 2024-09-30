@@ -33,3 +33,20 @@
     padding: 0;
   }
   
+@layer components {
+  .input-no-spinner {
+    @apply appearance-none; /* Ẩn kiểu mặc định */
+  }
+  
+  /* Ẩn mũi tên cho Chrome, Edge và các trình duyệt dựa trên Chromium */
+  .input-no-spinner::-webkit-outer-spin-button,
+  .input-no-spinner::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Ẩn mũi tên cho Firefox */
+  .input-no-spinner {
+    -moz-appearance: textfield;
+  }
+}

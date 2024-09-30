@@ -4,16 +4,16 @@ import ListProductSeries from '../../components/ProductSeries/ListProductSeries'
 import ProductSeriesDetails from '../../components/ProductSeries/ProductSeriesDetails'
 import { getProductSeriesInfo } from '../../api/ProductSeries'
 import PageNavigation from '../../components/PageNavigation'
+import Loading from '../../components/Loading'
 
 const ProductSeries = () => {
   const { id } = useParams()
-  const { data: productSeries } = useQuery(
-    ['get_product_by_cateogry', id],
+  const { data: productSeries, isLoading } =
+    (['get_product_by_cateogry', id],
     getProductSeriesInfo,
     {
       refetchOnWindowFocus: false,
-    }
-  )
+    })
   return (
     <div className="text-1.5xl bg-backgroudDefault pb-20">
       {productSeries && (
@@ -30,6 +30,7 @@ const ProductSeries = () => {
           </div>
         </>
       )}
+      {isLoading && <Loading />}
     </div>
   )
 }

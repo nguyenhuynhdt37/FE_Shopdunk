@@ -3,13 +3,18 @@ import CategorySelectors from './CategorySelectors'
 import ListProduct from './ListProduct'
 import { useCallback, useState } from 'react'
 import { getAllProductById } from '../../api/Category'
+import Loading from '../Loading'
 
 const ListCategory = ({ data, categoryId }) => {
   const initPageSize = 1
   const [sort, setSort] = useState('')
   const [pageNumber] = useState(1)
   const [pageSize, setPageSize] = useState(initPageSize)
-  const { data: objectProduct, refetch } = useQuery(
+  const {
+    data: objectProduct,
+    isLoading,
+    refetch,
+  } = useQuery(
     ['get_product_by_cateogry', categoryId, pageNumber, pageSize, sort],
     getAllProductById,
     {
@@ -40,6 +45,7 @@ const ListCategory = ({ data, categoryId }) => {
           )}
         </>
       )}
+      {isLoading && <Loading />}
     </div>
   )
 }

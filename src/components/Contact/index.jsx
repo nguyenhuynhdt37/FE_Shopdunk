@@ -3,7 +3,7 @@ import { useState } from 'react'
 const Contact = () => {
   const [active, setActive] = useState(false)
   return (
-    <div className="fixed right-16 bottom-60 rounded-full">
+    <div className="fixed bottom-32 right-16  rounded-full">
       <img
         src={
           !active

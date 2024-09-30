@@ -1,13 +1,18 @@
 import ShowProduct from '../../ShowProduct'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ButtonColorBox } from '../Button'
 import ButtonStorageBox from '../Button/ButtonStorage'
 import Promotion from '../Promotion'
 import Policy from '../Policy'
-import { FaStar } from 'react-icons/fa6'
-const ProductEssential = ({ data, name, isNewProduct }) => {
+import { useDispatch } from 'react-redux'
+import { addToVariantId } from '../../../redux/slice/ProductSlice'
+import AddToCart from '../AddToCart'
+const ProductEssential = ({ data, name }) => {
+  const dispatch = useDispatch()
   const [typeCheck, setTypeCheck] = useState(0)
-  console.log('data variant', data)
+  useEffect(() => {
+    dispatch(addToVariantId(data[typeCheck].id))
+  }, [data, dispatch, typeCheck])
 
   return (
     <div className=" relative grid grid-cols-2 text-[1.3rem] text-[#515154] product-box">
@@ -28,12 +33,7 @@ const ProductEssential = ({ data, name, isNewProduct }) => {
           />
         </div>
         <Promotion />
-        <button
-          type="button"
-          className="btn rounded-xl bg-primary1 text-white w-full h-24 text-2xl font-bold uppercase mt-8 btn-primary"
-        >
-          Buy Now
-        </button>
+        <AddToCart />
         <Policy />
       </div>
     </div>

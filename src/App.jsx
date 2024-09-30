@@ -8,7 +8,7 @@ const App = () => {
   return (
     <div className="box-root w-100 relative">
       <Header />
-      <div className="w-full m-0 bg-backgroudDefault">
+      <div className="w-full m-0 bg-backgroudDefault relative">
         <AppRouters />
       </div>
       <footer>

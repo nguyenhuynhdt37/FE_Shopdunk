@@ -8,6 +8,7 @@ import {
   ModalAuthLogInOrRegister,
 } from '../../components/Header/ModalAuth'
 import { useSelector } from 'react-redux'
+import Cart from '../../components/Header/Cart'
 
 const Header = () => {
   const user = useSelector((state) => state.auth.user)
@@ -83,13 +84,7 @@ const Header = () => {
             </div>
           </Tippy>
 
-          <Tippy content="Cart" theme="light" arrow={true}>
-            <div className="icon-cart mr-4">
-              <Link to="/cart">
-                <img src="/assets/icons/icon-cart.png" className="w-9" alt="" />
-              </Link>
-            </div>
-          </Tippy>
+          <Cart />
           {user &&
           Object.keys(user).length > 0 &&
           Object.values(user).length > 0 ? (
@@ -101,18 +96,8 @@ const Header = () => {
               interactive={true}
               arrow={false}
             >
-              <div className="h-full rounded-full bg-white p-0.5 mr-4">
-                {user.avatar ? (
-                  <img
-                    className="rounded-full w-10 object-cover"
-                    src={user.avatar}
-                  />
-                ) : (
-                  <img
-                    className="rounded-full w-10 object-cover"
-                    src="https://anhdepfree.com/wp-content/uploads/2020/06/icon-facebook-buon-dep.pngs"
-                  />
-                )}
+              <div>
+                <LiaUser className="mr-4" />
               </div>
             </Tippy>
           ) : (

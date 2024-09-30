@@ -6,10 +6,11 @@ import { useQuery } from 'react-query'
 import { getProductSeries } from '../../api/Category'
 
 import CategoryDetails from '../../components/Category/CategoryDetails'
+import Loading from '../../components/Loading'
 
 const Category = () => {
   const { id } = useParams()
-  const { data, isLoading, error } = useQuery(
+  const { data, isLoading } = useQuery(
     ['get_product-series_by_category', id],
     getProductSeries,
     {
@@ -34,6 +35,7 @@ const Category = () => {
           </div>
         </>
       )}
+      {isLoading && <Loading />}
     </div>
   )
 }

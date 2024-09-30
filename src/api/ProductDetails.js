@@ -40,3 +40,23 @@ export const getProductDescription = async ({ queryKey }) => {
     return null
   }
 }
+export const getProductSpecifications = async ({ queryKey }) => {
+  const [_key, id] = queryKey
+  try {
+    const data = await api.get(`products/${id}/specifications`)
+    return data.data
+  } catch (e) {
+    console.log(e)
+    return null
+  }
+}
+export const getProductDetails = async ({ queryKey }) => {
+  const [_key, id] = queryKey
+  try {
+    const data = await api.get(`products/${id}/details`)
+    return data.data
+  } catch (e) {
+    console.log(e)
+    return null
+  }
+}

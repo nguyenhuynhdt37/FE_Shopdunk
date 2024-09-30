@@ -2,11 +2,12 @@ import { useQuery } from 'react-query'
 import { memo, useState } from 'react'
 import ListProduct from '../../Category/ListProduct'
 import { getAllProductByProductSeriesID } from '../../../api/ProductSeries'
+import Loading from '../../Loading'
 const Listdataeries = memo(({ id }) => {
   const initPageSize = 1
   const [pageNumber] = useState(1)
   const [pageSize, setPageSize] = useState(initPageSize)
-  const { data, refetch } = useQuery(
+  const { data, refetch, isLoading } = useQuery(
     ['get_product_by_cateogry', id, pageNumber, pageSize],
     getAllProductByProductSeriesID,
     {
@@ -34,6 +35,7 @@ const Listdataeries = memo(({ id }) => {
           )}
         </>
       )}
+      {isLoading && <Loading />}
     </div>
   )
 })

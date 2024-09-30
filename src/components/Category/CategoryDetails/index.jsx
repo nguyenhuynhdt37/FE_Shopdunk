@@ -10,11 +10,13 @@ const CategoryDetails = ({ data }) => {
 
   return (
     <>
-      {data && data.content && (
+      {data && data?.content && (
         <div className="markdown-body text-justify relative rounded-xl mt-10 bg-white">
           <div className={isExpanded ? '' : 'fade'}>
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
-              {isExpanded ? data.content : `${data.content.substring(0, 600)}`}
+              {isExpanded
+                ? data?.content
+                : `${data?.content.substring(0, 600)}`}
             </ReactMarkdown>
             {!isExpanded && (
               <div className="ligature left-0 right-0 bottom-[3.5rem] h-28 bg-[#fff] opacity-35 absolute"></div>

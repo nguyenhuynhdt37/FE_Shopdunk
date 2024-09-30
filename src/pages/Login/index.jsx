@@ -3,32 +3,27 @@ import { RxCaretRight } from 'react-icons/rx'
 import { Link } from 'react-router-dom'
 import LoadingBar from 'react-top-loading-bar'
 import { isEmpty, isPasswordValid } from '../../../Utils/validation'
-import {
-  useGetUserByTokenQuery,
-  useLoginMutation,
-} from '../../redux/api/userApi'
-import { useDispatch } from 'react-redux'
-import {
-  setTokenAndRefestToken,
-  setUserInfo,
-} from '../../redux/slice/UserSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchUserLogin, GetUserToToken } from '../../redux/slice/UserSlice'
 
 const Login = () => {
   const dispatch = useDispatch()
   const ref = useRef()
   const [data, setData] = useState({ username: '', password: '' })
   const [dataError, setDataError] = useState({})
-  const [rememberMe, setRememberMe] = useState(true)
-  const [login] = useLoginMutation()
-  const [token, setToken] = useState(null)
-
-  const { refetch } = useGetUserByTokenQuery(null, { skip: !token })
-
+  const { loading, token   } = useSelector((state) => state.auth)
+  const [isLogin, setIsLogin] = useState(false)
   const handleInputChange = (e) => {
     const { name, value } = e.target
     setData({ ...data, [name]: value })
-    setDataError({ ...dataError, [name]: '', sever: [] })
+    setDataError({ ...dataError, [name]: '' })
   }
+  useEffect(() => {
+    if (isLogin && token) {
+      localStorage.setItem('token', token)
+      dispatch(GetUserToToken(token))
+    }
+  }, [dispatch, isLogin, token])
 
   const checkinValidation = () => {
     let newError = {}
@@ -51,65 +46,39 @@ const Login = () => {
       return
     }
 
-    ref.current.continuousStart()
-
     const datapost = {
       userName: data.username,
       password: data.password,
     }
-
-    try {
-      const response = await login(datapost).unwrap()
-      dispatch(setTokenAndRefestToken({ data: response }))
-      console.log(response)
-
-      setToken(response.token)
-
-      if (rememberMe) {
-        localStorage.setItem('refreshToken', response.refreshToken)
-        localStorage.setItem('token', response.token)
-      }
-    } catch (err) {
-      console.error('Error during login or fetching user data:', err)
-      if (err.data) {
-        setDataError({ ...dataError, sever: err.data })
-      } else {
-        setDataError({
-          ...dataError,
-          sever: ['Có lỗi xảy ra', 'Vui lòng thử lại sau'],
-        })
-      }
-    } finally {
-      ref.current.complete()
-    }
-  }
-
-  useEffect(() => {
-    if (token && refetch) {
-      const fetchUserData = async () => {
-        try {
-          const user = await refetch().unwrap()
-          dispatch(setUserInfo({ user }))
-        } catch (err) {
-          console.error('Error fetching user data:', err)
+    ref.current.continuousStart()
+    dispatch(fetchUserLogin(datapost))
+      .unwrap()
+      .then(() => setIsLogin(true))
+      .catch((e) => {
+        if (e === 401) {
+          setDataError({
+            status: 'Tài khoản hoặc mật khẩu không chính xác ndasjhduiasdhasi',
+          })
+        } else {
+          setDataError({ status: 'Có lỗi, vui lòng thử lại sau ít phút' })
         }
-      }
-      fetchUserData()
-    }
-  }, [token, refetch, dispatch])
-
+      })
+      .finally(() => {
+        ref.current.complete()
+      })
+  }
   return (
     <div className="bg-white">
       <LoadingBar color="#0066df" ref={ref} />
       <div className="container mx-auto text-xl mb-40">
         <ul className="box-nav-bar py-3 flex leading-11 text-xl">
           <li className="item flex items-center">
-            <Link to="/">Trang chủ</Link>
+            <Link className="hover:text-primary1" to="/">
+              Trang chủ
+            </Link>
             <RxCaretRight className="w-10 relative top-0.5" />
           </li>
-          <li className="item mr-2 flex items-center">
-            <Link to="/">Đăng nhập</Link>
-          </li>
+          <li className="item mr-2 flex items-center">Đăng nhập</li>
         </ul>
         <div className="content grid grid-cols-12 gap-x-5 py-24 px-8">
           <div className="img col-span-7 pe-20">
@@ -121,16 +90,11 @@ const Login = () => {
             />
           </div>
           <div className="col-span-5">
-            {dataError.sever && (
-              <div className="error pb-10">
-                {dataError.sever.map((value, index) => (
-                  <div className="error text-red text-2xl mb-30" key={index}>
-                    {value}
-                  </div>
-                ))}
+            <div className="error pb-10">
+              <div className="error text-red text-2xl mb-30">
+                {dataError.status}
               </div>
-            )}
-
+            </div>
             <div className="title text-5xl font-medium mb-10">Đăng nhập</div>
             <div className="box-input text-2xl mb-8 pt-10">
               <div className="title mb-2 font-medium">Tên tài khoản:</div>
@@ -159,15 +123,7 @@ const Login = () => {
               )}
             </div>
             <div className="function-more flex px-2 text-2xl justify-between">
-              <div className="save-password flex items-center text-zinc-500">
-                <input
-                  type="checkbox"
-                  className="cursor-pointer mr-4 w-[1.6rem] h-[1.6rem]"
-                  checked={rememberMe}
-                  onChange={() => setRememberMe(!rememberMe)}
-                />
-                Nhớ mật khẩu
-              </div>
+              <div className="save-password flex items-center text-zinc-500"></div>
               <div className="forget-password">
                 <Link to="/" className="text-primary1">
                   Quên mật khẩu?
@@ -175,10 +131,17 @@ const Login = () => {
               </div>
             </div>
             <div
-              className="btnsubmit mt-10 text-center py-6 bg-primary1 rounded-xl text-2xl text-white font-medium cursor-pointer"
+              className="btnsubmit mt-10 text-center py-6 justify-center flex items-center bg-primary1 rounded-xl text-2xl text-white font-medium cursor-pointer"
               onClick={handleSubmit}
             >
-              Đăng nhập
+              <div className="mr-2">Đăng nhập</div>
+              {loading && (
+                <img
+                  className="w-6"
+                  src={`/assets/icons/loading/load.gif`}
+                  alt=""
+                />
+              )}
             </div>
             <div className="create text-[1.6rem] pt-6">
               <span className="me-4">Bạn chưa có tài khoản?</span>

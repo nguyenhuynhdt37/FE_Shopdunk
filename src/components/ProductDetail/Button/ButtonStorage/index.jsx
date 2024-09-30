@@ -2,18 +2,26 @@ import { useEffect, useState } from 'react'
 import ButtonStorage from './ButtonStorage'
 import { formatCurrency } from '../../../../../Utils/formart'
 import { FaStar } from 'react-icons/fa6'
+import { useDispatch } from 'react-redux'
+import { addToMemoryOptionId } from '../../../../redux/slice/ProductSlice'
 const ButtonStorageBox = ({ storages, name }) => {
   const [data, setData] = useState(storages[0])
   const [active, setActive] = useState(0)
+  console.log('data storage', data)
+  const dispatch = useDispatch()
+
   useEffect(() => {
     setData(storages[0])
     setActive(0)
   }, [storages])
   const handleSelect = (storage, id) => {
     setActive(id)
-
     setData(storage)
   }
+  useEffect(() => {
+    dispatch(addToMemoryOptionId(data.id))
+  }, [data, dispatch])
+
   return (
     <>
       <h4 className="product_name text-4xl text-[#333] font-bold mb-3">
