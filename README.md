@@ -1,19 +1,10 @@
-# 🛒 ShopDunk Store Frontend - Apple Authorised Reseller Interface
+# 🛒 ShopDunk Store Frontend SPA (React & Redux Toolkit)
 
-![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black)
-![Vite](https://img.shields.io/badge/Vite-ViteJS-646CFF?style=for-the-badge&logo=vite&logoColor=white)
-![Redux Toolkit](https://img.shields.io/badge/Redux_Toolkit-764ABC?style=for-the-badge&logo=redux&logoColor=white)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-5-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
+[![React 18](https://img.shields.io/badge/React-18.x-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-ViteJS-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Redux Toolkit](https://img.shields.io/badge/Redux_Toolkit-764ABC?style=for-the-badge&logo=redux&logoColor=white)](https://redux-toolkit.js.org/)
 
-Giao diện Single Page Application (SPA) mô phỏng chuỗi cửa hàng ủy quyền Apple **ShopDunk**. Kết nối trực tiếp với Backend REST API (.NET / PHP).
-
----
-
-## ✨ Tính Năng Nổi Bật
-
-- 📱 **Danh Mục Sản Phẩm Apple:** iPhone, iPad, Mac, Apple Watch, Phụ kiện chính hãng.
-- 🛒 **Giỏ Hàng & Thanh Toán:** Thêm vào giỏ, cập nhật số lượng, áp mã giảm giá, đặt hàng.
-- 🔍 **Tìm Kiếm & Lọc:** Lọc theo dung lượng, màu sắc, khoảng giá.
+Giao diện Single Page Application (SPA) cho chuỗi bán lẻ Apple **ShopDunk**. Kết nối với RESTful API để hiển thị sản phẩm và xử lý giỏ hàng.
 
 ```bash
 git clone https://github.com/nguyenhuynhdt37/shopdunk-frontend-react.git
